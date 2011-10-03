@@ -3,20 +3,34 @@
 <head>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
   <script src='okshadow.js'></script>
-  <script src='jquery.parallax.js'></script>
+  <script src='jquery.parallax.unmin.js'></script>
   <script>
     $(function(){
         $('.ok').okshadow({
-        color:'red',
-        xOffset:80
+          color:'red',
         });
-        $("body").jparallax()
+        $("#stack").width($(window).width()).height($(window).height()).jparallax({});
     });
   </script>
+  <style type="text/css">
+    body {
+      overflow: hidden;
+    }
+    #stack {
+      position:relative; overflow:hidden;
+    }
+    .ok {
+      border: 1px solid blue;
+    }
+  </style>
 </head>
 <body>
-  <div class="ok" style="height:300px;width:300px;background:gray;border-radius:30px;"></div>
-  <div class="ok" style="height:200px;width:200px;background:gray;border-radius:30px;"></div>
-  <div class="ok" style="height:100px;width:100px;background:gray;border-radius:30px;"></div>
+  <div id="stack">
+    <div class="ok" style="height:300px;width:300px;background:gray;border-radius:30px;"></div>
+    <div class="ok" style="height:250px;width:250px;background:gray;border-radius:30px;"></div>
+    <div class="ok" style="height:200px;width:200px;background:gray;border-radius:30px;"></div>
+    <div class="ok" style="height:150px;width:150px;background:gray;border-radius:30px;"></div>
+    <div class="ok" style="height:100px;width:100px;background:gray;border-radius:30px;"></div>
+  </div>
 </body>
 </html>
