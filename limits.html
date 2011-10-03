@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<!--
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
+  <script src='okshadow.js'></script>
+  <script>
+    $(function(){
+        $('#default').okshadow({
+          textShadow:true,
+        });
+        $('#clamped').okshadow({
+          textShadow:true,
+          color: "red",
+          fuzzMin: 10,
+          fuzzMax: 10,
+          xMax: 5,
+          yMax: 5,
+        });
+        $('#fixed').okshadow({
+          textShadow:true,
+          color: "green",
+          xMax: 0.01,
+          yMax: 0.01,
+        });
+    });
+  </script>
+  <style type="text/css">
+    body {
+      overflow: hidden;
+    }
+    #ok {
+      position: absolute;
+      top: 50%;
+      margin-top: -128px;
+      width: 100%;
+      line-height: 128px;
+      text-align: center;
+      font-size: 16px;
+    }
+    #ok div {
+      width: 150px;
+      height: 100px;
+      display: inline-block;
+    }
+    li {
+      width: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div id="ok">
+    <div id="default">
+      default settings
+    </div>
+    <div id="clamped">
+      clamped at 5px
+    </div>
+    <div id="fixed">
+      clamped at 0.01px
+    </div>
+  </div>
+</body>
+</html>
