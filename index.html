@@ -1,7 +1,10 @@
 <!doctype html>
 <html>
 <head>
+<!--
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
   <script src='okshadow.js'></script>
   <script>
     $(function(){
@@ -11,13 +14,17 @@
         });
         $('li').okshadow({
           color:'blue',
-          textShadow:true
+          textShadow:true,
+          xMax: 5,
+          yMax: 5,
+          fuzzMin: 1.5,
+          fuzz: 30
         });
     });
   </script>
   <style type="text/css">
     li {
-      width: 100px;
+      width: 80px;
     }
   </style>
 </head>
@@ -30,11 +37,11 @@
     <li> <a href="parallax3.html">parallax 3</a></li>
     <li> <a href="parallax4.html">parallax 4</a></li>
     <li> <a href="parallax5.html">parallax 5</a></li>
-  </ul>
-
-  <ul>
+    <br>
     <li> <a href="text.html">text 1</a></li>
     <li> <a href="text2.html">text 2</a></li>
+    <br>
+    <li> <a href="limits.html">limits</a></li>
   </ul>
 
 </body>
