@@ -32,7 +32,7 @@
                     if (base.$el.css('text-shadow') === 'none' ) {
                         base.$el.css('box-shadow', sx + "px " + sy + "px " + fuzz + "px " + base.options.color);
                     } else {
-                        base.$el.css('box-shadow', sx + "px " + sy + "px " + fuzz + "px " + base.options.color);
+                        base.$el.css('text-shadow', sx + "px " + sy + "px " + fuzz + "px " + base.options.color);
                     } 
                 }
             });
