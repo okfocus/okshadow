@@ -15,22 +15,58 @@
         $('li').okshadow({
           color:'blue',
           textShadow:true,
-          xMax: 5,
-          yMax: 5,
+          xMax: 0.01,
+          yMax: 0.01,
           fuzzMin: 1.5,
           fuzz: 30
+        });
+        $('h1').okshadow({
+          color:'green',
+          textShadow:true,
+          xMax: 0.01,
+          yMax: 0.01,
+          fuzzMin: 3,
+          fuzz: 10
         });
     });
   </script>
   <style type="text/css">
+    body {
+      margin: 20px;
+    }
     li {
       width: 80px;
+      list-style-type: none;
+    }
+    a {
+      color: #33d;
+      color: transparent;
+    }
+    a:hover {
+      color: red;
+      text-shadow: none;
+    }
+    #ok {
+      display:inline-block;
+      height:100px;
+      width:100px;
+      background:gray;
+      border-radius:30px;
+    }
+    h1 {
+      font-size: 72px;
+      line-height: 12px;
+      margin-left: 20px;
+      color: transparent;
+      font-weight: bold;
+      font-style: italic;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-  <div id="ok" style="height:100px;width:100px;background:gray;border-radius:30px;"></div>
-
+  <div id="ok"></div>
+  <h1>okshadow</h1>
   <ul>
     <li> <a href="parallax.html">parallax 1</a></li>
     <li> <a href="parallax2.html">parallax 2</a></li>
