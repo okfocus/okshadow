@@ -10,7 +10,13 @@
           color:'red',
           xOffset: 30,
         });
-        $("#stack").width($(window).width()).height($(window).height()).jparallax();
+        $("#stack").width($(window).width()).height($(window).height()).jparallax({},
+          {xtravel: '20px', ytravel: '20px'},
+          {xtravel: '40px', ytravel: '40px'},
+          {xtravel: '60px', ytravel: '60px'},
+          {xtravel: '80px', ytravel: '80px'},
+          {xtravel: '100px', ytravel: '100px'}
+        );
     });
   </script>
   <style type="text/css">
