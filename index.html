@@ -6,13 +6,36 @@
   <script>
     $(function(){
         $('#ok').okshadow({
-        color:'red',
-        xOffset:80
+          color:'red',
+          xOffset:80
+        });
+        $('li').okshadow({
+          color:'blue',
+          textShadow:true
         });
     });
   </script>
+  <style type="text/css">
+    li {
+      width: 100px;
+    }
+  </style>
 </head>
 <body>
   <div id="ok" style="height:100px;width:100px;background:gray;border-radius:30px;"></div>
+
+  <ul>
+    <li> <a href="parallax.html">parallax 1</a></li>
+    <li> <a href="parallax2.html">parallax 2</a></li>
+    <li> <a href="parallax3.html">parallax 3</a></li>
+    <li> <a href="parallax4.html">parallax 4</a></li>
+    <li> <a href="parallax5.html">parallax 5</a></li>
+  </ul>
+
+  <ul>
+    <li> <a href="text.html">text 1</a></li>
+    <li> <a href="text2.html">text 2</a></li>
+  </ul>
+
 </body>
 </html>

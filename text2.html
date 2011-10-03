@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+  <script src='okshadow.js'></script>
+  <script>
+    $(function(){
+        $('#ok').okshadow({
+          color:'red',
+          xOffset: 1000,
+          yOffset: 1000,
+          textShadow:true
+        });
+    });
+  </script>
+  <style type="text/css">
+    body {
+      overflow: hidden;
+    }
+    #ok {
+      position: absolute;
+      top: 50%;
+      margin-top: -128px;
+      width: 100%;
+      line-height: 128px;
+      text-align: center;
+      font-size: 256px;
+      color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div id="ok">okfocus</div>
+</body>
+</html>

@@ -29,10 +29,10 @@
                     sy = (cy - y) / base.options.yOffset,
                     distance = Math.sqrt(dx*dx + dy*dy),
                     fuzz = distance / base.options.fuzz;
-                    if (base.$el.css('text-shadow') === 'none' ) {
-                        base.$el.css('box-shadow', sx + "px " + sy + "px " + fuzz + "px " + base.options.color);
-                    } else {
+                    if (base.options.textShadow) {
                         base.$el.css('text-shadow', sx + "px " + sy + "px " + fuzz + "px " + base.options.color);
+                    } else {
+                        base.$el.css('box-shadow', sx + "px " + sy + "px " + fuzz + "px " + base.options.color);
                     } 
                 }
             });
@@ -44,7 +44,8 @@
         color: '#888',
         fuzz: 40,
         xOffset: 30,
-        yOffset: 30
+        yOffset: 30,
+        textShadow: false
     };
     
     $.fn.okshadow = function(options){
