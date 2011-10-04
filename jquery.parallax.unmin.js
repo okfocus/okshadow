@@ -248,9 +248,8 @@
             viewport.element.children().css('position', 'absolute');
             moveLayers(layer, 0.5, 0.5);
             if (settings.mouseResponse) {
-  console.log("what");
+                // this was bound to the wrong thing and did not work
                 $(this).mousemove(function(mouse) {
-  console.log("mousemove");
                     mouseport.xinside = (mouse.pageX >= mouseport.left && mouse.pageX < mouseport.width + mouseport.left) ? true: false;
                     mouseport.yinside = (mouse.pageY >= mouseport.top && mouse.pageY < mouseport.height + mouseport.top) ? true: false;
                     if (mouseport.xinside && mouseport.yinside && !mouseport.active) {
@@ -279,7 +278,6 @@
             }
             if (settings.triggerResponse) {
                 viewport.element.bind("jparallax", function(event, ref) {
-console.log("this weird bind")
                     ref = stripFiletype(ref);
                     matrixSearch(layer, ref, function(i, n) {
                         localmouse.x = layer[i].content[n].posxrat * (layer[i].diffxrat + 1) - (0.5 * layer[i].diffxrat);
@@ -323,7 +321,6 @@ console.log("this weird bind")
         takeoverThresh: 0.002,
         frameDuration: 25
     };
-  console.log("init origin");
     initOrigin(jQuery.fn.jparallax.settings);
     jQuery(function() {});
 })(jQuery);

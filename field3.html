@@ -15,15 +15,11 @@
             h  = $(window).height(),
             side = 100,
             pad = 20,
-            z = 1,
             percol = Math.floor((w-pad) / (side + pad)),
             perrow = Math.floor((h-pad) / (side + pad)),
             leftshim = -1 * (w - (side+pad)*percol + pad ) / 2,
             topshim = -1 * (h - (side+pad)*perrow + pad) / 2,
-            frag = document.createDocumentFragment(),
-            shadows = "#555 #666 #777".split(" "),
-            choice = function (list) { return list[Math.floor(Math.random() * list.length)] };
-
+            frag = document.createDocumentFragment();
         perrow += 1;
         percol += 2;
         for (var i = 0; i < perrow; i++) {
@@ -35,16 +31,17 @@
             div.style.top = topshim + (side+pad) * i + "px";
             div.style.backgroundColor = "white";
             frag.appendChild(div);
+            var hue = Math.floor(720 * ( j / percol + i / perrow ) / 2);
             $(div).okshadow({
-              color: choice(shadows),
-              fuzzMin: 1,
+              color: "hsl(" + hue + ",80%,75%)", //  + rgb.join(",") + ")",
+              fuzzMin: 2,
               fuzzMax: 20,
-              yMax: 10,
-            }).bind("mouseover", function(){$(this).css("z-index", z++)});
+              yMax: 5,
+              xMax: 5,
+            });
           }
         }
         document.body.appendChild(frag);
-        $(window).one("mousemove", function(){$("div").fadeIn()});
     });
   </script>
 
@@ -54,11 +51,9 @@
     }
     body {
       overflow: hidden;
-      font-size: 100px;
     }
     div {
       position: absolute;
-      display: none;
     }
     * {
       -webkit-user-select: none;
