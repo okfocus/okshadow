@@ -12,7 +12,7 @@
         };
         
         base.build = function(){
-                base.start();
+            base.start();
         };
         
         base.clamp = function (x, min, max) {
@@ -37,8 +37,8 @@
             cx = offset.left + base.$el.width() / 2,
             dx = (cx - x),
             dy = (cy - y)
-            sx = (cx - x) / base.options.xFactor,
-            sy = (cy - y) / base.options.yFactor,
+            sx = dx / base.options.xFactor,
+            sy = dy / base.options.yFactor,
             distance = Math.sqrt(dx*dx + dy*dy),
             fuzz = distance / base.options.fuzz + base.options.fuzzMin;
             if (base.options.xMax !== null)

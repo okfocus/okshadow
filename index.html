@@ -13,7 +13,7 @@
         $('#ok').okshadow({
           color: 'red',
         });
-        $('#sidebar li').okshadow({
+        $('li a').okshadow({
           color: 'blue',
           textShadow: true,
           transparent: true,
@@ -70,18 +70,15 @@
     td b {
       color: #444;
     }
-    #sidebar a {
-      color: transparent;
-    }
     #sidebar a:hover {
-      color: red;
-      text-shadow: none;
+      color: red !important;
+      text-shadow: none !important;
     }
     #ok {
       display:inline-block;
       height:100px;
       width:100px;
-      background:gray;
+      background: gray;
       border-radius:30px;
     }
     h1 {
@@ -163,7 +160,7 @@ $('#ok').okshadow({
     <pre>
 $('h1').okshadow({
   color: '#bbb',
-  textShadow:true,
+  textShadow: true,
   xMax: 10,
   yMax: 10,
   fuzzMin: 3,
@@ -175,7 +172,7 @@ $('h1').okshadow({
       Additionally, CSS is used to make the text come sharply into focus on hover, while a <b>fuzzMin</b> setting keeps the other text blurry when the mouse is near:
     </p>
     <pre>
-$('li').okshadow({
+$('li a').okshadow({
   color: 'blue',
   textShadow: true,
   transparent: true,
@@ -187,8 +184,8 @@ $('li').okshadow({
 <b>css:</b>
 
 a:hover {
-  color: red;
-  text-shadow: none;
+  color: red !important;
+  text-shadow: none !important;
 }
 
 
@@ -196,43 +193,43 @@ a:hover {
     <h3>Usage</h3>
     <table id="params" cellspacing="0">
       <tr><th>color</th>       
-        <td>sets shadow color.</td>
+        <td>sets shadow color</td>
         <td width='100'><b>red</b></td>
       </tr>
       <tr><th>textShadow</th>
-        <td>applies the shadow to the text; otherwise, the shadow affects the container ("box-shadow").</td>
+        <td>applies the shadow to the text; otherwise, the shadow affects the container ("box-shadow")</td>
         <td width='100'><b>false</b></td>
       </tr>
       <tr><th>transparent</th>
-        <td>sets text color to transparent for a ghost text effect. </td>
+        <td>sets text color to transparent for a ghost text effect </td>
         <td width='100'><b>false</b></td>
       </tr>
       <tr><th>xMax</th>      
-        <td>constrains shadow's movement horizontally. </td>
+        <td>constrains shadow's movement horizontally</td>
         <td width='100'><b>null</b></td>
       </tr>
       <tr><th>yMax</th>      
-        <td>constrains shadow's movement vertically. </td>
+        <td>constrains shadow's movement vertically</td>
         <td width='100'><b>null</b></td>
       </tr>
       <tr><th>xFactor</th>    
-        <td>ratio affecting blur position based on mouse distance.</td>
+        <td>ratio affecting blur position based on mouse distance</td>
         <td width='100'><b>30</b></td>
       </tr>
       <tr><th>yFactor</th>    
-        <td>ratio affecting blur position based on mouse distance.</td>
+        <td>ratio affecting blur position based on mouse distance</td>
         <td width='100'><b>30</b></td>
       </tr>
       <tr><th>fuzzMin</th>   
-        <td>lower bound for blur effect.</td>
+        <td>lower bound for blur effect</td>
         <td width='100'><b>null</b></td>
       </tr>
       <tr><th>fuzzMax</th>   
-        <td>upper bound for blur effect.</td>
+        <td>upper bound for blur effect</td>
         <td width='100'><b>null</b></td>
       </tr>
       <tr><th>fuzzFactor</th> 
-        <td>ratio affecting blur intensity to mouse distance.<br/>Lower values produce a more intense blur.</td>
+        <td>ratio affecting blur intensity to mouse distance.<br/>See <a href="limits.html">limits</a> for a demonstration of these ratios</td>
         <td width='100'><b>40</b></td>
       </tr>
     </table>
