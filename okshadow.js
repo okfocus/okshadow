@@ -37,8 +37,8 @@
             cx = offset.left + base.$el.width() / 2,
             dx = (cx - x),
             dy = (cy - y)
-            sx = (cx - x) / base.options.xRatio,
-            sy = (cy - y) / base.options.yRatio,
+            sx = (cx - x) / base.options.xFactor,
+            sy = (cy - y) / base.options.yFactor,
             distance = Math.sqrt(dx*dx + dy*dy),
             fuzz = distance / base.options.fuzz + base.options.fuzzMin;
             if (base.options.xMax !== null)
@@ -62,9 +62,9 @@
         fuzz: 40,
         fuzzMin: 0,
         fuzzMax: null,
-        xRatio: 30,
+        xFactor: 30,
         xMax: null,
-        yRatio: 30,
+        yFactor: 30,
         yMax: null,
         textShadow: false,
         transparent: false

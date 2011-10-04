@@ -26,7 +26,15 @@
           $("#pyramid").append(el);
         }
 
-        $('#pyramid div').okshadow({ textShadow:true, color: "#777", yMax: 0.01, xMax: 0.01, fuzzMin: 0, fuzzMax: 10 });
+        $('#pyramid div').okshadow({
+          textShadow: true,
+          transparent: true,
+          color: "#777",
+          yMax: 0,
+          xMax: 0,
+          fuzzMin: 0, 
+          fuzzMax: 10
+        });
 
         $("#parallax")
             .width($(window).width()).height($(window).height())
@@ -63,7 +71,6 @@
       left: 0;
       width: 100%;
       line-height: 1px;
-      color: transparent;
     }
     #pyramid * {
       -webkit-user-select: none;
