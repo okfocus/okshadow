@@ -126,18 +126,17 @@
     <h1>okshadow&nbsp;&nbsp;</h1>
   </div>
   <ul id="sidebar">
-    <li> <a href="landscape.html">landscape 1</a></li>
-    <li> <a href="landscape2.html">landscape 2</a></li>
+    <li> <a href="landscape.html">landscape</a></li>
+    <li> <a href="bellows.html">bellows</a></li>
     <br>
-    <li> <a href="parallax.html">parallax 1</a></li>
-    <li> <a href="parallax2.html">parallax 2</a></li>
-    <li> <a href="parallax3.html">parallax 3</a></li>
-    <li> <a href="parallax4.html">parallax 4</a></li>
+    <li> <a href="field.html">field 1</a></li>
+    <li> <a href="field2.html">field 2</a></li>
+    <li> <a href="field3.html">field 3</a></li>
     <br>
     <li> <a href="text.html">text 1</a></li>
     <li> <a href="text2.html">text 2</a></li>
     <br>
-    <li> <a href="limits.html">limits</a></li>
+    <li> <a href="factors.html">factors</a></li>
     <br>
   </ul>
   <div id="content">
@@ -196,7 +195,7 @@ a:hover {
     <table id="params" cellspacing="0">
       <tr><th>color</th>       
         <td>sets shadow color</td>
-        <td width='100'><b>red</b></td>
+        <td width='100'><b>#888</b></td>
       </tr>
       <tr><th>textShadow</th>
         <td>applies the shadow to the text; otherwise, the shadow affects the container ("box-shadow")</td>
@@ -214,14 +213,6 @@ a:hover {
         <td>vertical movement constraint, in pixels</td>
         <td width='100'><b>null</b></td>
       </tr>
-      <tr><th>xFactor</th>    
-        <td>ratio affecting blur position based on mouse distance</td>
-        <td width='100'><b>30</b></td>
-      </tr>
-      <tr><th>yFactor</th>    
-        <td>ratio affecting blur position based on mouse distance</td>
-        <td width='100'><b>30</b></td>
-      </tr>
       <tr><th>fuzzMin</th>   
         <td>minimum blur radius in pixels</td>
         <td width='100'><b>null</b></td>
@@ -230,8 +221,16 @@ a:hover {
         <td>maximum blur radius in pixels</td>
         <td width='100'><b>null</b></td>
       </tr>
+      <tr><th>xFactor</th>    
+        <td>affects blur position based on mouse distance</td>
+        <td width='100'><b>30</b></td>
+      </tr>
+      <tr><th>yFactor</th>    
+        <td>affects blur position based on mouse distance</td>
+        <td width='100'><b>30</b></td>
+      </tr>
       <tr><th>fuzzFactor</th> 
-        <td>ratio affecting blur intensity to mouse distance.<br/>See <a href="limits.html">limits</a> for a demonstration of these ratios</td>
+        <td>affects blur radius based on mouse distance<br/><i>demonstration: </i> <a href="factors.html">factors</a></td>
         <td width='100'><b>40</b></td>
       </tr>
     </table>

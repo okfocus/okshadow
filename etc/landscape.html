@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<!--
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
+  <script src='jquery-ui-1.8.16.custom.min.js'></script>
+  <script src='okshadow.js'></script>
+  <script src='jquery.parallax.unmin.js'></script>
+  <script>
+    $(function(){
+/*
+        $("div div div").draggable({stop: function () {
+          var divs = [];
+          $("div div div").each(function () { 
+            console.log(this.style);
+            var offset = $(this).offset();
+            divs.push("#" + this.id + "{top:"+offset.top+"px;left:"+offset.left+"px;}");
+          });
+          $("textarea").text(divs.join(""));
+        }});
+*/
+
+        $('.mountain').okshadow({ textShadow:true, color: "#668", yMax: 0.01 });
+        $('.plain')   .okshadow({ textShadow:true, color: "peru", yMax: 0.01 });
+        $('.water')   .okshadow({ textShadow:true, color: "skyblue", yMax: 0.01 });
+        $('.tree')    .okshadow({ textShadow:true, color: "#666", yMax: 0.01 });
+        $('.cloud')   .okshadow({ textShadow:true, color: "skyblue", yMax: 0.01 });
+        $('.sun')     .okshadow({ textShadow:true, color: "#fff", yMax: 0.01, xMax: 0.01, fuzz: 10, });
+
+        $("#parallax").jparallax({yparallax: false}
+          ,
+          {xtravel: 0.05},
+          {xtravel: 0.3},
+          {xtravel: 0.1},
+          {xtravel: 0.1},
+          {xtravel: 0.1},
+          {xtravel: 0.2},
+          {xtravel: 0.1}
+        );
+    });
+  </script>
+  <style type="text/css">
+    html,body{
+      height: 100%;
+    }
+    body {
+      background-image: linear-gradient(bottom, rgb(244,245,213) 33%, rgb(161,206,255) 73%);
+      background-image: -o-linear-gradient(bottom, rgb(244,245,213) 33%, rgb(161,206,255) 73%);
+      background-image: -moz-linear-gradient(bottom, rgb(244,245,213) 33%, rgb(161,206,255) 73%);
+      background-image: -webkit-linear-gradient(bottom, rgb(244,245,213) 33%, rgb(161,206,255) 73%);
+      background-image: -ms-linear-gradient(bottom, rgb(244,245,213) 33%, rgb(161,206,255) 73%);
+      background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.33, rgb(244,245,213)), color-stop(0.73, rgb(161,206,255)));
+      overflow: hidden;
+      font-size: 100px;
+    }
+    #mountains,#plains1,#plains2,#lake,#trees,#sun,#clouds {
+      width: 120%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    #parallax div div {
+      position: absolute;
+    }
+    .mountain { color: #585; font-size: 100%; }
+    .plain { color: tan; font-size: 60%; }
+    .water { color: #36c; font-size: 70%; }
+    .tree { color: #4b4; font-size: 120%; }
+    #t2 { color: #5b3; font-size: 80%; }
+    .sun { color: #ff3; font-size: 200%; }
+    .cloud { color: #def; }
+    #c1 { font-size: 50%; }
+    #c2 { font-size: 50%; }
+    #c3 { font-size: 75%; }
+    #c4 { font-size: 100%; }
+    textarea {
+      position: fixed; right: 10px; bottom: 10px; width: 100px; height: 100px;
+    }
+    #parallax {
+      width: 1000px;
+      margin-left: -350px;
+      left: 50%;
+      height: 500px;
+      position:absolute;
+    }
+  </style>
+
+  <style type="text/css">
+#m1{top:252px;left:553px;}#m2{top:206px;left:750px;}#m3{top:247px;left:659px;}#m4{top:220px;left:600px;}#m5{top:227px;left:710px;}#m6{top:242px;left:536px;}#m7{top:254px;left:484px;}#p1{top:337px;left:271px;}#p2{top:299px;left:429px;}#p3{top:330px;left:302px;}#p4{top:332px;left:378px;}#p5{top:327px;left:322px;}#p6{top:290px;left:468px;}#w1{top:291px;left:-25px;}#w2{top:282px;left:104px;}#w3{top:323px;left:-15px;}#w4{top:329px;left:48px;}#w5{top:311px;left:4px;}#w6{top:282px;left:81px;}#w7{top:277px;left:-11px;}#p7{top:293px;left:530px;}#p8{top:302px;left:374px;}#t1{top:209px;left:20px;}#t2{top:242px;left:121px;}.sun{top:-48px;left:681px;}#c1{top:222px;left:86px;}#c2{top:174px;left:204px;}#c3{top:55px;left:427px;}#c4{top:4px;left:547px;}
+  </style>
+</head>
+<body>
+<div id="parallax">
+  <div id="sun">
+    <div class="sun">&#9728;</div>
+  </div>
+  <div id="mountains">
+    <div id="m1" class="mountain">&#9751;</div>
+    <div id="m2" class="mountain">&#9751;</div>
+    <div id="m3" class="mountain">&#9751;</div>
+    <div id="m4" class="mountain">&#9751;</div>
+    <div id="m5" class="mountain">&#9751;</div>
+    <div id="m6" class="mountain">&#9751;</div>
+    <div id="m7" class="mountain">&#9751;</div>
+  </div>
+  <div id="plains1">
+    <div id="p1" class="plain">&#9777;&#9780;&#9781;&#9782;&#9783;&#9782;&#9781;&#9780;&#9779;&#9778;&#9777;</div>
+    <div id="p2" class="plain">&#9777;&#9778;&#9779;&#9780;&#9781;&#9782;&#9783;&#9782;</div>
+    <div id="p3" class="plain">&#9777;&#9778;&#9779;&#9780;&#9781;&#9782;&#9783;</div>
+    <div id="p4" class="plain">&#9777;&#9778;&#9779;&#9780;&#9781;&#9782;&#9783;&#9782;&#9781;</div>
+    <div id="p5" class="plain">&#9777;&#9778;&#9779;&#9780;&#9781;&#9782;&#9783;&#9782;&#9781;&#9780;</div>
+    <div id="p6" class="plain">&#9777;&#9778;&#9779;&#9780;&#9781;&#9782;&#9783;</div>
+  </div>
+  <div id="lake">
+    <div id="w1" class="water">&#9810;&#9810;&#9810;&#9810;&#9810;&#9810;</div>
+    <div id="w2" class="water">&#9810;&#9810;&#9810;&#9810;&#9810;&#9810;</div>
+    <div id="w3" class="water">&#9810;&#9810;&#9810;&#9810;&#9810;&#9810;</div>
+    <div id="w4" class="water">&#9810;&#9810;&#9810;&#9810;&#9810;&#9810;</div>
+    <div id="w5" class="water">&#9810;&#9810;&#9810;&#9810;</div>
+    <div id="w6" class="water">&#9810;&#9810;&#9810;&#9810;</div>
+    <div id="w7" class="water">&#9810;&#9810;&#9810;&#9810;</div>
+  </div>
+  <div id="plains2">
+    <div id="p7" class="plain">&#9778;&#9779;&#9780;&#9781;&#9782;&#9783;</div>
+    <div id="p8" class="plain">&#9777;&#9779;&#9780;&#9781;&#9782;&#9783;</div>
+  </div>
+  <div id="trees">
+    <div id="t1" class="tree">&#9824;</div>
+    <div id="t2" class="tree">&#9824;</div>
+  </div>
+  <div id="clouds">
+    <div id="c1" class="cloud">&#9729;</div>
+    <div id="c2" class="cloud">&#9729;</div>
+    <div id="c3" class="cloud">&#9729;</div>
+    <div id="c4" class="cloud">&#9729;</div>
+  </div>
+</div>
+</body>
+</html>

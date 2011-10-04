@@ -35,13 +35,7 @@
           fuzzMin: 0, 
           fuzzMax: 10
         });
-
-        $("#parallax")
-            .width($(window).width()).height($(window).height())
-            .jparallax({yparallax: false}
-          ,
-          {xtravel: 0.05}
-        );
+        $(window).one("mousemove", function(){$("div").fadeIn(500)});
     });
   </script>
 
@@ -71,6 +65,7 @@
       left: 0;
       width: 100%;
       line-height: 1px;
+      display: none;
     }
     #pyramid * {
       -webkit-user-select: none;
