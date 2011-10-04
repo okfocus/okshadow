@@ -11,23 +11,28 @@
   <script src='jquery.parallax.unmin.js'></script>
   <script>
     $(function(){
-        $('.mountain').okshadow({ textShadow:true, color: "#777", yMax: 0.01, });
-        $('#t1')      .okshadow({ textShadow:true, color: "#444", yMax: 0.01 });
-        $('#t2')      .okshadow({ textShadow:true, color: "#666", yMax: 0.01 });
-        $('.cloud')   .okshadow({ textShadow:true, color: "#e0e0f0", yMax: 0.01 });
-        $('#o1')      .okshadow({ textShadow:true, color: "white", yMax: 0.01 });
-        $('#man')     .okshadow({ textShadow:true, color: "red", yMax: 0.01  });
+        var w  = $(window).width();
+        var h  = $(window).height();
+        var hm = 0;
+
+        for (var i = 25, t = hm; t < h; i += 2, t += 20) {
+          var el = document.createElement("div");
+          var html = [];
+          for (var j = 0, dpr = w/i; j < dpr; j++)
+            html.push(".");
+          el.innerHTML = html.join(" ");
+          el.style.fontSize = i*2 + "%";
+          el.style.top = t + "px";
+          $("#pyramid").append(el);
+        }
+
+        $('#pyramid div').okshadow({ textShadow:true, color: "#777", yMax: 0.01, xMax: 0.01, fuzzMin: 0, fuzzMax: 10 });
 
         $("#parallax")
             .width($(window).width()).height($(window).height())
             .jparallax({yparallax: false}
           ,
-          {xtravel: 0.05},
-          {xtravel: 0.1},
-          {xtravel: 0.2},
-          {xtravel: 0.2},
-          {xtravel: 0.4},
-          {xtravel: 0.1}
+          {xtravel: 0.05}
         );
     });
   </script>
@@ -46,79 +51,31 @@
       overflow: hidden;
       font-size: 100px;
     }
-    #thing,#mountains,.trees,#moon,#clouds {
-      width: 120%;
-      height: 100%;
-      position: absolute;
-      top: 0;
+    #pyramid {
       left: 0;
-    }
-    #parallax div div {
+      top: 0;
+      width: 100%;
       position: absolute;
     }
-    .mountain { color: transparent; font-size: 100%; letter-spacing: -10px; }
-    #t1       { color: transparent; font-size: 180%; }
-    #t2       { color: transparent; font-size: 80%; }
-    #o1       { color: transparent; font-size: 100%; }
-    .cloud    { color: transparent; }
-    #c1       { font-size: 50%; }
-    #c2       { font-size: 70%; }
-    #c3       { font-size: 105%; }
-    #c4       { font-size: 120%; }
-    #man      { font-size: 250%; color: transparent; }
-    textarea  { position: fixed; right: 10px; bottom: 10px; width: 100px; height: 100px; }
-    #parallax {
-      left: 33%;
-      height: 500px;
-      position:absolute;
+    #pyramid div {
+      position: absolute;
+      text-align: center;
+      left: 0;
+      width: 100%;
+      line-height: 1px;
+      color: transparent;
     }
-    #parallax * {
+    #pyramid * {
       -webkit-user-select: none;
       -khtml-user-select: none;
       -moz-user-select: none;
       -o-user-select: none;
       user-select: none;
     }
-    #o1{top:10px;left:-100px;}
-    #t1{top:282px;left:-210px;}
-    #t2{top:313px;left:-475px;}
-    #c1{top:172px;left:550px;}#c2{top:116px;left:55px;}#c3{top:120px;left:185px;}#c4{top:148px;left:351px;}
-    #m1{top:283px;left:175px;font-size:55%;}
-    #m2{top:269px;left:323px;font-size:80%;}
-    #m3{top:262px;left:445px;font-size:100%;}
-    #m4{top:257px;left:603px;font-size:120%;}
-    #m5{top:247px;left:788px;font-size:150%;}
-    #man{top:311px;left:225px;}
   </style>
 </head>
 
 <body>
-<div id="parallax">
-  <div id="moon">
-    <div id="o1">&#9790;</div>
-  </div>
-  <div id="clouds">
-    <div id="c1" class="cloud">&#9729;</div>
-    <div id="c2" class="cloud">&#9729;</div>
-    <div id="c3" class="cloud">&#9729;</div>
-    <div id="c4" class="cloud">&#9729;</div>
-  </div>
-  <div id="mountains">
-    <div id="m1" class="mountain">&#8710;&#8710;&#8710;&#8710;&#8710;&#8710;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-    <div id="m2" class="mountain">&#8710;&#8710;&#8710;&nbsp;&nbsp;</div>
-    <div id="m3" class="mountain">&#8710;&#8710;&#8710;&nbsp;&nbsp;</div>
-    <div id="m4" class="mountain">&#8710;&#8710;&#8710;&nbsp;&nbsp;</div>
-    <div id="m5" class="mountain">&#8710;&#8710;&#8710;&nbsp;&nbsp;</div>
-  </div>
-  <div class="trees">
-    <div id="t2" class="tree">&#9824;&#9824;&#9824;&#9824;&#9824;&#9824;&#9824;&#9824;</div>
-  </div>
-  <div class="trees">
-    <div id="t1" class="tree">&#9824;&#9824;&#9824;</div>
-  </div>
-  <div id="thing">
-    <div id="man">✌(◕‿-)✌</div>
-  </div>
-</div>
+<div id="pyramid"></div>
 </body>
 </html>

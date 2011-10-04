@@ -21,9 +21,34 @@
         });
         $('#fixed').okshadow({
           textShadow:true,
-          color: "green",
-          xMax: 0.01,
-          yMax: 0.01,
+          color: "#ff0",
+          xMax: 0,
+          yMax: 0,
+          fuzzMax: 5,
+        });
+        $('#clamp-x').okshadow({
+          textShadow:true,
+          color: "blue",
+          xMax: 0,
+          fuzzMax: 5,
+        });
+        $('#clamp-y').okshadow({
+          textShadow:true,
+          color: "purple",
+          yMax: 0,
+          fuzzMax: 5,
+        });
+        $('#low').okshadow({
+          textShadow:true,
+          color: "#0ff",
+          xRatio: 5,
+          yRatio: 5,
+        });
+        $('#high').okshadow({
+          textShadow:true,
+          color: "#0d0",
+          xRatio: 50,
+          yRatio: 50,
         });
     });
   </script>
@@ -34,7 +59,7 @@
     #ok {
       position: absolute;
       top: 50%;
-      margin-top: -128px;
+      margin-top: -256px;
       width: 100%;
       line-height: 128px;
       text-align: center;
@@ -52,15 +77,15 @@
 </head>
 <body>
   <div id="ok">
-    <div id="default">
-      default settings
-    </div>
-    <div id="clamped">
-      clamped at 5px
-    </div>
-    <div id="fixed">
-      clamped at 0.01px
-    </div>
+    <div id="default">default settings</div>
+    <div id="clamped">clamped at 5px</div>
+    <br/>
+    <div id="clamp-x">clamp horizontally</div>
+    <div id="clamp-y">clamp vertically</div>
+    <div id="fixed">clamped both ways</div>
+    <br/>
+    <div id="low">x-yRatio = 5</div>
+    <div id="high">x-yRatio = 50</div>
   </div>
 </body>
 </html>

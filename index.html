@@ -4,45 +4,76 @@
 <!--
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
 -->
+  <title>OKShadow</title>
+  <meta charset='utf-8'>
   <script src='jquery.js'></script>
   <script src='okshadow.js'></script>
   <script>
     $(function(){
         $('#ok').okshadow({
-          color:'red',
-          xOffset:80
+          color: 'red',
         });
-        $('li').okshadow({
-          color:'blue',
-          textShadow:true,
+        $('#sidebar li').okshadow({
+          color: 'blue',
+          textShadow: true,
+          transparent: true,
           xMax: 0.01,
           yMax: 0.01,
           fuzzMin: 1.5,
           fuzz: 30
         });
         $('h1').okshadow({
-          color:'green',
-          textShadow:true,
-          xMax: 0.01,
-          yMax: 0.01,
+          color: '#bbb',
+          textShadow: true,
+          xMax: 10,
+          yMax: 10,
           fuzzMin: 3,
-          fuzz: 10
+          fuzzMax: 10,
         });
     });
   </script>
   <style type="text/css">
     body {
       margin: 20px;
+      background: url('img/photocopy.png');
+      font-family: sans-serif;
+      font-size: 15px;
+      line-height: 22px;
+      color: #333;
     }
-    li {
-      width: 80px;
+    ul#sidebar {
+      display: inline-block;
+      margin: 15px 10px 0 0; padding: 0;
+      vertical-align: top;
+    }
+    ul#sidebar li {
+      width: 100px;
       list-style-type: none;
     }
-    a {
-      color: #33d;
+    table {
+      margin-top: -10px;
+    }
+    th {
+      text-align: left;
+      vertical-align: top;
+      font-weight: normal;
+      padding-right: 10px;
+      color: #000;
+      font-style: italic;
+    }
+    td {
+      vertical-align: top;
+      padding-left: 0;
+      padding-right: 10px;
+      color: #555;
+    }
+    td b {
+      color: #444;
+    }
+    #sidebar a {
       color: transparent;
     }
-    a:hover {
+    #sidebar a:hover {
       color: red;
       text-shadow: none;
     }
@@ -57,31 +88,176 @@
       font-size: 72px;
       line-height: 12px;
       margin-left: 20px;
-      color: transparent;
       font-weight: bold;
       font-style: italic;
       display: inline-block;
+      color: #444;
+    }
+    #content {
+      display: inline-block;
+      width: 600px;
+      vertical-align: top;
+    }
+    pre {
+      border: 1px solid #ddd;
+      background: rgb(238,238,238);
+      background: rgba(238,238,238,0.5);
+      font-size: 12px;
+      line-height: 15px;
+      padding: 5px 0 5px 10px;
+      width: 250px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+    pre#license {
+      width: 100%;
+      margin: 0;
+    }
+    pre a {
+      color: #00f;
+    }
+    p {
+      width: 100%;
     }
   </style>
 </head>
 <body>
-  <div id="ok"></div>
-  <h1>okshadow</h1>
-  <ul>
+  <div id="header">
+    <div id="ok"></div>
+    <h1>okshadow&nbsp;&nbsp;</h1>
+  </div>
+  <ul id="sidebar">
+    <li> <a href="landscape.html">landscape 1</a></li>
+    <li> <a href="landscape2.html">landscape 2</a></li>
+    <br>
     <li> <a href="parallax.html">parallax 1</a></li>
     <li> <a href="parallax2.html">parallax 2</a></li>
     <li> <a href="parallax3.html">parallax 3</a></li>
     <li> <a href="parallax4.html">parallax 4</a></li>
-    <li> <a href="parallax5.html">parallax 5</a></li>
     <br>
     <li> <a href="text.html">text 1</a></li>
     <li> <a href="text2.html">text 2</a></li>
     <br>
     <li> <a href="limits.html">limits</a></li>
     <br>
-    <li> <a href="landscape.html">landscape 1</a></li>
-    <li> <a href="landscape2.html">landscape 2</a></li>
   </ul>
+  <div id="content">
+    <h2>OKShadow by OKFocus</h2>
+    <p>
+      OKShadow is a JQuery plugin that makes it easy to create drop shadows that react to mouse proximity.
+      A variety of effects are possible, including depth-of-field simulation and focus effects.
+    </p>
 
+    <h3>Examples</h3>
+    <p>
+      A basic box shadow, used on the square at top left:
+    </p>
+    <pre>
+$('#ok').okshadow({
+  color: 'red'
+});</pre>
+    <p>
+      A text shadow, used on the heading at the very top.  <b>xMax</b> and <b>yMax</b> constrain the position of the shadow.
+      <b>fuzzMin</b> and <b>fuzzMax</b> constrain the amount of blur, keeping the shadow blurry, but never completely in focus:
+    </p>
+    <pre>
+$('h1').okshadow({
+  color: '#bbb',
+  textShadow:true,
+  xMax: 10,
+  yMax: 10,
+  fuzzMin: 3,
+  fuzzMax: 10,
+});</pre>
+    <p>
+      A text shadow, used on the links at left.  The <b>transparent</b> parameter sets the text-color to transparent, producing a ghost text effect.
+      With both <b>xMax</b> and <b>yMax</b> set to zero, the shadow does not move.
+      Additionally, CSS is used to make the text come sharply into focus on hover, while a <b>fuzzMin</b> setting keeps the other text blurry when the mouse is near:
+    </p>
+    <pre>
+$('li').okshadow({
+  color: 'blue',
+  textShadow: true,
+  transparent: true,
+  xMax: 0,
+  yMax: 0,
+  fuzzMin: 1.5
+});</pre>
+    <pre>
+<b>css:</b>
+
+a:hover {
+  color: red;
+  text-shadow: none;
+}
+
+
+</pre>
+    <h3>Usage</h3>
+    <table id="params" cellspacing="0">
+      <tr><th>color</th>       
+        <td>sets shadow color.</td>
+        <td width='100'><b>red</b></td>
+      </tr>
+      <tr><th>textShadow</th>
+        <td>applies the shadow to the text; otherwise, the shadow affects the container ("box-shadow").</td>
+        <td width='100'><b>false</b></td>
+      </tr>
+      <tr><th>transparent</th>
+        <td>sets text color to transparent for a ghost text effect. </td>
+        <td width='100'><b>false</b></td>
+      </tr>
+      <tr><th>xMax</th>      
+        <td>constrains shadow's movement horizontally. </td>
+        <td width='100'><b>null</b></td>
+      </tr>
+      <tr><th>yMax</th>      
+        <td>constrains shadow's movement vertically. </td>
+        <td width='100'><b>null</b></td>
+      </tr>
+      <tr><th>xRatio</th>    
+        <td>ratio affecting blur position based on mouse distance.</td>
+        <td width='100'><b>30</b></td>
+      </tr>
+      <tr><th>yRatio</th>    
+        <td>ratio affecting blur position based on mouse distance.</td>
+        <td width='100'><b>30</b></td>
+      </tr>
+      <tr><th>fuzzMin</th>   
+        <td>lower bound for blur effect.</td>
+        <td width='100'><b>null</b></td>
+      </tr>
+      <tr><th>fuzzMax</th>   
+        <td>upper bound for blur effect.</td>
+        <td width='100'><b>null</b></td>
+      </tr>
+      <tr><th>fuzzRatio</th> 
+        <td>ratio affecting blur intensity to mouse distance.<br/>Lower values produce a more intense blur.</td>
+        <td width='100'><b>40</b></td>
+      </tr>
+    </table>
+  <h3>License</h3>
+    <pre id="license">
+Copyright © 2011 OKFocus, <a href="http://okfoc.us">http://okfoc.us</a>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+“Software”), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
+  </div>
 </body>
 </html>
