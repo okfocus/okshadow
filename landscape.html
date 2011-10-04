@@ -11,23 +11,23 @@
   <script src='jquery.parallax.unmin.js'></script>
   <script>
     $(function(){
-        $('.mountain').okshadow({ textShadow:true, color: "#777", yMax: 0.01, });
-        $('#t1')      .okshadow({ textShadow:true, color: "#444", yMax: 0.01 });
-        $('#t2')      .okshadow({ textShadow:true, color: "#666", yMax: 0.01 });
-        $('.cloud')   .okshadow({ textShadow:true, color: "#e0e0f0", yMax: 0.01 });
-        $('#o1')      .okshadow({ textShadow:true, color: "white", yMax: 0.01 });
-        $('#man')     .okshadow({ textShadow:true, color: "red", yMax: 0.01  });
+        $('.mountain').okshadow({ textShadow:true, transparent: true, color: "#777", yMax: 0, });
+        $('#t1')      .okshadow({ textShadow:true, transparent: true, color: "#444", yMax: 0 });
+        $('#t2')      .okshadow({ textShadow:true, transparent: true, color: "#666", yMax: 0 });
+        $('.cloud')   .okshadow({ textShadow:true, transparent: true, color: "#e0e0f0", yMax: 0, fuzzMin: 1, });
+        $('#o1')      .okshadow({ textShadow:true, transparent: true, color: "white", yMax: 0, fuzzMin: 2, });
+        $('#man')     .okshadow({ textShadow:true, transparent: true, color: "red", yMax: 0  });
 
         $("#parallax")
             .width($(window).width()).height($(window).height())
             .jparallax({yparallax: false}
           ,
-          {xtravel: 0.05},
-          {xtravel: 0.1},
+          {xtravel: 0.15},
           {xtravel: 0.2},
-          {xtravel: 0.2},
+          {xtravel: 0.3},
           {xtravel: 0.4},
-          {xtravel: 0.1}
+          {xtravel: 0.6},
+          {xtravel: 0.3}
         );
     });
   </script>
@@ -59,21 +59,21 @@
     #parallax div div {
       position: absolute;
     }
-    .mountain { color: transparent; font-size: 100%; letter-spacing: -10px; }
-    #t1       { color: transparent; font-size: 180%; }
-    #t2       { color: transparent; font-size: 80%; }
-    #o1       { color: transparent; font-size: 100%; }
-    .cloud    { color: transparent; }
+    .mountain { font-size: 100%; letter-spacing: -10px; }
+    #t1       { font-size: 180%; }
+    #t2       { font-size: 80%; }
+    #o1       { font-size: 100%; }
+    .cloud    { }
     #c1       { font-size: 50%; }
     #c2       { font-size: 70%; }
     #c3       { font-size: 105%; }
     #c4       { font-size: 120%; }
-    #man      { font-size: 250%; color: transparent; }
+    #man      { font-size: 250%; }
     textarea  { position: fixed; right: 10px; bottom: 10px; width: 100px; height: 100px; }
     #parallax {
       left: 33%;
       height: 500px;
-      position:absolute;
+      position: absolute;
     }
     #parallax * {
       -webkit-user-select: none;
