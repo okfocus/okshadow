@@ -75,11 +75,13 @@
       text-shadow: none !important;
     }
     #ok {
-      display:inline-block;
-      height:100px;
-      width:100px;
-      background: gray;
-      border-radius:30px;
+      display: inline-block;
+      height: 100px;
+      width: 100px;
+      background: #f4f0f8 url(social_media_icon2.png);
+      background-position: center center;
+      background-size: cover;
+      border-radius:50px;
     }
     h1 {
       font-size: 72px;
@@ -141,13 +143,13 @@
   <div id="content">
     <h2>OKShadow by OKFocus</h2>
     <p>
-      OKShadow is a JQuery plugin that makes it easy to create drop shadows that react to mouse proximity.
+      OKShadow is a JQuery plugin that makes it easy to create drop shadows that track the mouse cursor.
       A variety of effects are possible, including depth-of-field simulation and focus effects.
     </p>
 
     <h3>Examples</h3>
     <p>
-      A basic box shadow, used on the square at top left:
+      A basic box shadow, used on the logo at top left:
     </p>
     <pre>
 $('#ok').okshadow({
@@ -169,7 +171,7 @@ $('h1').okshadow({
     <p>
       A text shadow, used on the links at left.  The <b>transparent</b> parameter sets the text-color to transparent, producing a ghost text effect.
       With both <b>xMax</b> and <b>yMax</b> set to zero, the shadow does not move.
-      Additionally, CSS is used to make the text come sharply into focus on hover, while a <b>fuzzMin</b> setting keeps the other text blurry when the mouse is near:
+      Additionally, CSS is used to make the text come sharply into focus on hover (use <i>!important</i>), while a <b>fuzzMin</b> setting keeps the other links blurry as the mouse grows near:
     </p>
     <pre>
 $('li a').okshadow({
@@ -205,11 +207,11 @@ a:hover {
         <td width='100'><b>false</b></td>
       </tr>
       <tr><th>xMax</th>      
-        <td>constrains shadow's movement horizontally</td>
+        <td>horizontal movement constraint, in pixels</td>
         <td width='100'><b>null</b></td>
       </tr>
       <tr><th>yMax</th>      
-        <td>constrains shadow's movement vertically</td>
+        <td>vertical movement constraint, in pixels</td>
         <td width='100'><b>null</b></td>
       </tr>
       <tr><th>xFactor</th>    
@@ -221,11 +223,11 @@ a:hover {
         <td width='100'><b>30</b></td>
       </tr>
       <tr><th>fuzzMin</th>   
-        <td>lower bound for blur effect</td>
+        <td>minimum blur radius in pixels</td>
         <td width='100'><b>null</b></td>
       </tr>
       <tr><th>fuzzMax</th>   
-        <td>upper bound for blur effect</td>
+        <td>maximum blur radius in pixels</td>
         <td width='100'><b>null</b></td>
       </tr>
       <tr><th>fuzzFactor</th> 

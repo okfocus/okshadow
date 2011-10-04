@@ -9,11 +9,11 @@
   <script src='jquery.parallax.unmin.js'></script>
   <script>
     $(function(){
-        $('#ok5').okshadow({ color: '#ff0', fuzz: 50 });
-        $('#ok4').okshadow({ color: '#fb0', fuzz: 40 });
-        $('#ok3').okshadow({ color: '#f80', fuzz: 30 });
-        $('#ok2').okshadow({ color: '#f40', fuzz: 20 });
-        $('#ok1').okshadow({ color: '#f00', fuzz: 10 });
+        $('#ok5').okshadow({ color: '#ff0', fuzz: 50, fuzzMin: 1, });
+        $('#ok4').okshadow({ color: '#fb0', fuzz: 40, fuzzMin: 1, });
+        $('#ok3').okshadow({ color: '#f80', fuzz: 30, fuzzMin: 1, });
+        $('#ok2').okshadow({ color: '#f40', fuzz: 20, fuzzMin: 1, });
+        $('#ok1').okshadow({ color: '#f00', fuzz: 10, fuzzMin: 1, });
         $("#stack").width($(window).width()).height($(window).height()).jparallax({},
           {xtravel: 0.1, ytravel: 0.1},
           {xtravel: 0.2, ytravel: 0.2},
