@@ -6,6 +6,7 @@
 -->
   <script src='jquery.js'></script>
   <script src='okshadow.js'></script>
+  <script src='swfobject.js'></script>
   <script>
     $(function(){
         $('#ok').okshadow({
@@ -18,7 +19,7 @@
         });
 
         var hue = 0,
-            delay = 25,
+            delay = 10,
             fuzz = 9,
             fuzzMax = 20,
             fuzzDir = false,
@@ -40,6 +41,10 @@
           setTimeout(loop, delay);
         };
         loop ();
+
+        $("#city").animate({"top": "0%"}, 14000, function (){
+          $("#ok").animate({"top": "35%"}, 1000);
+        });
     });
   </script>
   <style type="text/css">
@@ -48,24 +53,45 @@
       src: url("neon2.ttf")
     }
     body {
-      background: black;
+      background: #080828;
       overflow: hidden;
+    }
+    #city {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #city img {
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -webkit-optimize-contrast;
+      -ms-interpolation-mode:nearest-neighbor;
+      width: 100%;
+      height: 110%;
     }
     #ok {
       position: absolute;
       font-family: Neon;
       width: 100%;
-      top: 50%;
-      margin-top: -108px;
+      top: -100%;
       letter-spacing: -10px;
       line-height: 128px;
       text-align: center;
-      font-size: 256px;
+      font-size: 280px;
       color: #444;
+    }
+    #ytapiplayer {
+      position: fixed;
+      left: -2000px;
+      top: 0;
     }
   </style>
 </head>
 <body>
+  <div id="city"><img src="snatcher.png"></div>
   <div id="ok">&nbsp;okfocus&nbsp;</div>
+  <div id="ytapiplayer"></div>
+  <audio src="snatcher.mp3" autoplay></audio>
 </body>
 </html>
