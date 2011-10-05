@@ -142,6 +142,10 @@
       margin: 0;
       padding: 10px;
     }
+    pre#methods {
+      width: auto;
+      padding: 10px;
+    }
     pre a {
       color: #00f;
     }
@@ -283,10 +287,15 @@ $('#example3 a').okshadow({
     </table>
   <h3>Methods</h3>
   <p>
-    OKShadow offers the method <b>setoption</b> to allow parameters to be changed after instantiation.
+    OKShadow offers the method <b>setoption</b> so parameters can be changed after instantiation.
     It takes either a hash of parameters or a single key and value.
   </p>
-
+  <pre id="methods">
+$('#ok').okshadow();
+$('#ok').data("okshadow").setoption({
+  "color": "red",
+  "fuzzMin": 10,
+});</pre>
   <h3>License</h3>
     <pre id="license">
 Copyright © 2011 OKFocus, <a href="http://okfoc.us">http://okfoc.us</a>
