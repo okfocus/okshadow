@@ -28,16 +28,24 @@ h3. Methods
 
 p. OKShadow offers the method *setoption* so parameters can be changed after instantiation. It takes either a hash of parameters or a single key and value. For example:
 
-bc(js). $('#ok').okshadow();
+<pre class='js'>
+<code>
+$('#ok').okshadow();
 $('#ok').data("okshadow").setoption({
   "color": "red",
   "fuzzMin": 10,
 });
+</code>
+</pre>
 
 h3. Run Tests
 
 p. OKFocus tests JavaScript with Jasmine. Run tests:
 
-bc(sh). $ gem install jasmine
+<pre class='sh'>
+<code>
+$ gem install jasmine
 $ jasmine init
 $ rake jasmine:ci
+</code>
+</pre>
