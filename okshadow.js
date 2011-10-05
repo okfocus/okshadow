@@ -47,6 +47,8 @@
               sy = base.clamp(sy, -1 * base.options.yMax, base.options.yMax)
             if (base.options.fuzzMax !== null)
               fuzz = base.clamp(fuzz, base.options.fuzzMin, base.options.fuzzMax)
+            sx += base.options.xOffset;
+            sy += base.options.yOffset;
             if (base.options.textShadow) {
                 base.$el.css('text-shadow', sx + "px " + sy + "px " + fuzz + "px " + base.options.color);
             } else {
@@ -62,8 +64,10 @@
         fuzz: 40,
         fuzzMin: 0,
         fuzzMax: null,
+        xOffset: 0,
         xFactor: 30,
         xMax: null,
+        yOffset: 0,
         yFactor: 30,
         yMax: null,
         textShadow: false,

@@ -10,10 +10,17 @@
   <script src='okshadow.js'></script>
   <script>
     $(function(){
-        $('#ok').okshadow({
-          color: 'red',
+        $('#example1').okshadow();
+        $('#example2').okshadow({
+          color: '#555',
+          textShadow: true,
+          xMax: 5,
+          yMax: 0,
+          yOffset: 3,
+          fuzzMin: 1,
+          fuzzMax: 3,
         });
-        $('li a').okshadow({
+        $('#example3 a').okshadow({
           color: 'blue',
           textShadow: true,
           transparent: true,
@@ -41,14 +48,21 @@
       line-height: 22px;
       color: #333;
     }
+    #container {
+      width: 600px;
+      margin: 0 auto;
+    }
     ul#sidebar {
       display: inline-block;
       margin: 15px 10px 0 0; padding: 0;
       vertical-align: top;
+      width: 120px;
     }
     ul#sidebar li {
-      width: 100px;
       list-style-type: none;
+    }
+    a {
+      color #00f;
     }
     table {
       margin-top: -10px;
@@ -70,7 +84,22 @@
     td b {
       color: #444;
     }
-    #sidebar a:hover {
+    #example1 {
+      display: inline-block;
+      height: 40px;
+      width: 40px;
+      background-color: #ddd;
+      margin: 0 20px;
+      z-index: -1;
+    }
+    #example2 {
+      display: inline-block;
+      width: 300px;
+    }
+    #example3 {
+      display: inline-block;
+    }
+    #example3 a:hover {
       color: red !important;
       text-shadow: none !important;
     }
@@ -118,26 +147,16 @@
     p {
       width: 100%;
     }
+
   </style>
 </head>
 <body>
+<div id="container">
   <div id="header">
     <div id="ok"></div>
     <h1>okshadow&nbsp;&nbsp;</h1>
   </div>
   <ul id="sidebar">
-    <li> <a href="landscape.html">landscape</a></li>
-    <li> <a href="bellows.html">bellows</a></li>
-    <br>
-    <li> <a href="field.html">field 1</a></li>
-    <li> <a href="field2.html">field 2</a></li>
-    <li> <a href="field3.html">field 3</a></li>
-    <br>
-    <li> <a href="text.html">text 1</a></li>
-    <li> <a href="text2.html">text 2</a></li>
-    <br>
-    <li> <a href="factors.html">factors</a></li>
-    <br>
   </ul>
   <div id="content">
     <h2>OKShadow by OKFocus</h2>
@@ -147,50 +166,69 @@
     </p>
 
     <h3>Examples</h3>
+    <ul>
+      <li> <a href="landscape.html">Landscape</a></li>
+      <li> <a href="pyramid.html">Pyramid</a></li>
+      <li> <a href="squares.html">Squares</a></li>
+      <li> <a href="lines.html">Lines</a></li>
+      <li> <a href="dots.html">Dots</a></li>
+    </ul>
+
+    <h3>Usage</h3>
     <p>
-      A basic box shadow, used on the logo at top left:
+      By default, OKShadow binds to a div:
     </p>
     <pre>
-$('#ok').okshadow({
-  color: 'red'
-});</pre>
+
+    $('#example1').okshadow();
+
+</pre>
+    <div id="example1">
+    </div>
     <p>
-      A text shadow, used on the heading at the very top.  <b>xMax</b> and <b>yMax</b> constrain the position of the shadow.
-      <b>fuzzMin</b> and <b>fuzzMax</b> constrain the amount of blur, keeping the shadow blurry, but never completely in focus:
+      OKShadow also works on text. In this case the shadow's size and movement are restricted.
     </p>
     <pre>
-$('h1').okshadow({
-  color: '#bbb',
+$('#example2').okshadow({
+  color: '#555',
   textShadow: true,
-  xMax: 10,
-  yMax: 10,
-  fuzzMin: 3,
-  fuzzMax: 10,
+  xMax: 5,
+  yMax: 0,
+  yOffset: 3,
+  fuzzMin: 1,
+  fuzzMax: 3,
 });</pre>
+<div id="example2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
     <p>
-      A text shadow, used on the links at left.  The <b>transparent</b> parameter sets the text-color to transparent, producing a ghost text effect.
-      With both <b>xMax</b> and <b>yMax</b> set to zero, the shadow does not move.
+      In the last example, the <b>transparent</b> parameter makes the text invisible but leaves the shadow, producing a ghost text effect.
       Additionally, CSS is used to make the text come sharply into focus on hover (use <i>!important</i>), while a <b>fuzzMin</b> setting keeps the other links blurry as the mouse grows near:
     </p>
     <pre>
-$('li a').okshadow({
+$('#example3 a').okshadow({
   color: 'blue',
   textShadow: true,
   transparent: true,
   xMax: 0,
   yMax: 0,
-  fuzzMin: 1.5
-});</pre>
-    <pre>
+  fuzzMin: 1.5,
+  fuzz: 30
+});
+
 <b>css:</b>
 
 a:hover {
   color: red !important;
   text-shadow: none !important;
 }
-
-
 </pre>
+<div id="example3">
+<a href="#">Aureli pathice et cinaede Furi,</a><br/>
+<a href="#">Qui me ex versiculis meis putastis,</a><br/>
+<a href="#">Quod sunt molliculi, parum pudicum.</a><br/>
+<a href="#">Atqui putate: namque totius vobis</a><br/>
+<a href="#">Frontem tabernae sopionibus scribam.</a><br/>
+<a href="#">Pedicabo ego vos et irrumabo.</a><br/>
+</div>
     <h3>Usage</h3>
     <table id="params" cellspacing="0">
       <tr><th>color</th>       
@@ -202,16 +240,32 @@ a:hover {
         <td width='100'><b>false</b></td>
       </tr>
       <tr><th>transparent</th>
-        <td>sets text color to transparent for a ghost text effect </td>
+        <td>sets text color to transparent for ghost text effect </td>
         <td width='100'><b>false</b></td>
       </tr>
       <tr><th>xMax</th>      
         <td>horizontal movement constraint, in pixels</td>
         <td width='100'><b>null</b></td>
       </tr>
+      <tr><th>xOffset</th>      
+        <td>horizontal offset, in pixels</td>
+        <td width='100'><b>0</b></td>
+      </tr>
+      <tr><th>xFactor</th>    
+        <td>affects blur position based on mouse distance</td>
+        <td width='100'><b>30</b></td>
+      </tr>
       <tr><th>yMax</th>      
         <td>vertical movement constraint, in pixels</td>
         <td width='100'><b>null</b></td>
+      </tr>
+      <tr><th>yOffset</th>      
+        <td>vertical offset, in pixels</td>
+        <td width='100'><b>0</b></td>
+      </tr>
+      <tr><th>yFactor</th>    
+        <td>affects blur position based on mouse distance</td>
+        <td width='100'><b>30</b></td>
       </tr>
       <tr><th>fuzzMin</th>   
         <td>minimum blur radius in pixels</td>
@@ -220,14 +274,6 @@ a:hover {
       <tr><th>fuzzMax</th>   
         <td>maximum blur radius in pixels</td>
         <td width='100'><b>null</b></td>
-      </tr>
-      <tr><th>xFactor</th>    
-        <td>affects blur position based on mouse distance</td>
-        <td width='100'><b>30</b></td>
-      </tr>
-      <tr><th>yFactor</th>    
-        <td>affects blur position based on mouse distance</td>
-        <td width='100'><b>30</b></td>
       </tr>
       <tr><th>fuzzFactor</th> 
         <td>affects blur radius based on mouse distance<br/><i>demonstration: </i> <a href="factors.html">factors</a></td>
@@ -256,6 +302,7 @@ NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
-  </div>
+  </pre>
+</div>
 </body>
 </html>
