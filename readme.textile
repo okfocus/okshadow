@@ -10,18 +10,21 @@ p. OKShadow can bind to any DOM element that recognizes the CSS3 box-shadow or t
 
 h3. Options
 
-* *color*	sets shadow color	%{color:gray}defaults to #888%
-* *textShadow*	applies the shadow to the text; otherwise, the shadow affects the container ("box-shadow") %{color:gray}defaults to false%
-* *transparent*	sets text color to transparent for ghost text effect %{color:gray}defaults to false%
-* *xMax*	horizontal movement constraint, in pixels	%{color:gray}defaults to null%
-* *xOffset*	horizontal offset, in pixels %{color:gray}defaults to 0%
-* *xFactor*	affects blur position based on mouse distance	%{color:gray}defaults to 30%
-* *yMax*	vertical movement constraint, in pixels	%{color:gray}defaults to null%
-* *yOffset*	vertical offset, in pixels %{color:gray}defaults to 0%
-* *yFactor*	affects blur position based on mouse distance	%{color:gray}defaults to 30%
-* *fuzzMin*	minimum blur radius in pixels	%{color:gray}defaults to null%
-* *fuzzMax*	maximum blur radius in pixels	%{color:gray}defaults to null%
-* *fuzzFactor*	affects blur radius based on mouse distance %{color:gray}defaults to 40%
+
+|_.option|_.description|_.default|
+|color|sets shadow color|#888|
+|textShadow|applies the shadow to the text; otherwise, the shadow affects the container ("box-shadow")|false|
+|transparent|sets text color to transparent for ghost text effect|false|
+|xMax|horizontal movement constraint, in pixels|null|
+|yxOffset|horizontal offset, in pixels|0|
+|xFactor|affects blur position based on mouse distance|30|
+|yMax|vertical movement constraint, in pixels|null|
+|yOffset|vertical offset, in pixels|0|
+|yFactor|affects blur position based on mouse distance|30|
+|fuzzMin|minimum blur radius in pixels|null|
+|fuzzMax|maximum blur radius in pixels|null|
+|fuzzFactor|affects blur radius based on mouse distance|40|
+
 
 h3. Methods
 
