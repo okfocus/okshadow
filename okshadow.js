@@ -1,5 +1,5 @@
 (function($){
-    
+
     $.okshadow = function(el, options){
         var base = this;       
         base.$el = $(el);
@@ -16,7 +16,18 @@
         };
         
         base.clamp = function (x, min, max) {
-          return Math.max(min, Math.min(max, x));
+            return Math.max(min, Math.min(max, x));
+        };
+
+        base.setoption = function (key, value) {
+            if (typeof key === "string") {
+              base.options[key] = value;
+              if (key === 'color')
+                return base.update();
+            } else {
+              base.options = $.extend(base.options, key);
+            }
+            base.mousemove(base);
         };
 
         base.start = function () {
@@ -25,7 +36,7 @@
             });
             base.mousemove({ pageX: $(window).width() / 2, pageY: $(window).height() / 2 });
             if (base.options.transparent) {
-              base.el.style.color = "transparent";
+                base.el.style.color = "transparent";
             }
         };
 
@@ -42,23 +53,32 @@
             distance = Math.sqrt(dx*dx + dy*dy),
             fuzz = distance / base.options.fuzz + base.options.fuzzMin;
             if (base.options.xMax !== null)
-              sx = base.clamp(sx, -1 * base.options.xMax, base.options.xMax)
+                sx = base.clamp(sx, -1 * base.options.xMax, base.options.xMax)
             if (base.options.yMax !== null)
-              sy = base.clamp(sy, -1 * base.options.yMax, base.options.yMax)
+                sy = base.clamp(sy, -1 * base.options.yMax, base.options.yMax)
             if (base.options.fuzzMax !== null)
-              fuzz = base.clamp(fuzz, base.options.fuzzMin, base.options.fuzzMax)
+                fuzz = base.clamp(fuzz, base.options.fuzzMin, base.options.fuzzMax)
             sx += base.options.xOffset;
             sy += base.options.yOffset;
+            base.pageX = x;
+            base.pageY = y;
+            base.sx = sx;
+            base.sy = sy;
+            base.fuzz = fuzz;
+            base.update();
+        };
+
+        base.update = function () {
             if (base.options.textShadow) {
                 base.$el.css('text-shadow', sx + "px " + sy + "px " + fuzz + "px " + base.options.color);
             } else {
                 base.$el.css('box-shadow', sx + "px " + sy + "px " + fuzz + "px " + base.options.color);
             } 
-        };
+        }
 
         base.init();
     };
-            
+
     $.okshadow.options = { 
         color: '#888',
         fuzz: 40,

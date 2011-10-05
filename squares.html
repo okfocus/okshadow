@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
+  <script src='jquery-ui-1.8.16.custom.min.js'></script>
+  <script src='okshadow.js'></script>
+  <script src='jquery.parallax.unmin.js'></script>
+  <script>
+    $(function(){
+        var w  = $(window).width(),
+            h  = $(window).height(),
+            side = 100,
+            pad = 20,
+            percol = Math.floor((w-pad) / (side + pad)),
+            perrow = Math.floor((h-pad) / (side + pad)),
+            leftshim = -1 * (w - (side+pad)*percol + pad ) / 2,
+            topshim = -1 * (h - (side+pad)*perrow + pad) / 2,
+            frag = document.createDocumentFragment();
+        perrow += 1;
+        percol += 2;
+        for (var i = 0; i < perrow; i++) {
+          for (var j = 0; j < percol; j++) {
+            var div = document.createElement("div");
+            div.style.width = side + "px";
+            div.style.height = side + "px";
+            div.style.left = leftshim + (side+pad) * j + "px";
+            div.style.top = topshim + (side+pad) * i + "px";
+            div.style.backgroundColor = "white";
+            frag.appendChild(div);
+            var hue = Math.floor(720 * ( j / percol + i / perrow ) / 2);
+            $(div).okshadow({
+              color: "hsl(" + hue + ",80%,75%)", //  + rgb.join(",") + ")",
+              fuzzMin: 2,
+              fuzzMax: 20,
+              yMax: 5,
+              xMax: 5,
+            });
+          }
+        }
+        document.body.appendChild(frag);
+    });
+  </script>
+
+  <style type="text/css">
+    html,body{
+      height: 100%;
+    }
+    body {
+      overflow: hidden;
+    }
+    div {
+      position: absolute;
+    }
+    * {
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+</body>
+</html>

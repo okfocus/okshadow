@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<!--
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
+  <script src='okshadow.js'></script>
+  <script src='jquery.parallax.unmin.js'></script>
+  <script>
+    $(function(){
+        $('#ok5').okshadow({ color: '#ff0', fuzz: 50, fuzzMin: 1, });
+        $('#ok4').okshadow({ color: '#fb0', fuzz: 40, fuzzMin: 1, });
+        $('#ok3').okshadow({ color: '#f80', fuzz: 30, fuzzMin: 1, });
+        $('#ok2').okshadow({ color: '#f40', fuzz: 20, fuzzMin: 1, });
+        $('#ok1').okshadow({ color: '#f00', fuzz: 10, fuzzMin: 1, });
+        $("#stack").width($(window).width()).height($(window).height()).jparallax({},
+          {xtravel: 0.1, ytravel: 0.1},
+          {xtravel: 0.2, ytravel: 0.2},
+          {xtravel: 0.3, ytravel: 0.3},
+          {xtravel: 0.4, ytravel: 0.4},
+          {xtravel: 0.5, ytravel: 0.5}
+        );
+    });
+  </script>
+  <style type="text/css">
+    body {
+      overflow: hidden;
+    }
+    #stack {
+      position:relative; overflow:hidden;
+    }
+    #stack div {
+      border-radius: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div id="stack">
+    <div id="ok1" style="height:300px;width:300px;background:gray;"></div>
+    <div id="ok2" style="height:250px;width:250px;background:gray;"></div>
+    <div id="ok3" style="height:200px;width:200px;background:gray;"></div>
+    <div id="ok4" style="height:150px;width:150px;background:gray;"></div>
+    <div id="ok5" style="height:100px;width:100px;background:gray;"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
+  <script src='jquery-ui-1.8.16.custom.min.js'></script>
+  <script src='okshadow.js'></script>
+  <script src='jquery.parallax.unmin.js'></script>
+  <script>
+    $(function(){
+        var w  = $(window).width();
+        var h  = $(window).height();
+        var hm = 0;
+
+        for (var i = 25, t = hm; t < h; i += 2, t += 20) {
+          var el = document.createElement("div");
+          var html = [];
+          for (var j = 0, dpr = w/i; j < dpr; j++)
+            html.push(".");
+          el.innerHTML = html.join(" ");
+          el.style.fontSize = i*2 + "%";
+          el.style.top = t + "px";
+          $("#pyramid").append(el);
+        }
+
+        $('#pyramid div').okshadow({
+          textShadow: true,
+          transparent: true,
+          color: "#777",
+          yMax: 0,
+          xMax: 0,
+          fuzzMin: 0, 
+          fuzzMax: 10
+        });
+    });
+  </script>
+
+  <style type="text/css">
+    html,body{
+      height: 100%;
+    }
+    body {
+      background-image: linear-gradient(bottom, rgb(250,250,250) 32%, rgb(77,77,77) 100%);
+      background-image: -o-linear-gradient(bottom, rgb(250,250,250) 32%, rgb(77,77,77) 100%);
+      background-image: -moz-linear-gradient(bottom, rgb(250,250,250) 32%, rgb(77,77,77) 100%);
+      background-image: -webkit-linear-gradient(bottom, rgb(250,250,250) 32%, rgb(77,77,77) 100%);
+      background-image: -ms-linear-gradient(bottom, rgb(250,250,250) 32%, rgb(77,77,77) 100%);
+      background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.32, rgb(250,250,250)), color-stop(1, rgb(77,77,77)));
+      overflow: hidden;
+      font-size: 100px;
+    }
+    #pyramid {
+      left: 0;
+      top: 0;
+      width: 100%;
+      position: absolute;
+    }
+    #pyramid div {
+      position: absolute;
+      text-align: center;
+      left: 0;
+      width: 100%;
+      line-height: 1px;
+    }
+    #pyramid * {
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+  </style>
+</head>
+
+<body>
+<div id="pyramid"></div>
+</body>
+</html>

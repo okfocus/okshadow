@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<!--
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
+  <script src='okshadow.js'></script>
+  <script>
+    $(function(){
+        $('#ok').okshadow({
+          color: 'red',
+          textShadow: true,
+          fuzzMin: 0,
+          xMax: 0,
+          yMax: 0,
+          transparent: true,
+        });
+
+        var hue = 0,
+            delay = 25,
+            fuzz = 9,
+            fuzzMax = 20,
+            fuzzDir = false,
+            okshadow = $('#ok').data("okshadow");
+
+        var loop = function () {
+          if (fuzz >= fuzzMax || fuzz === 0)
+            fuzzDir = ! fuzzDir;
+          fuzz += fuzzDir ? 1 : -1;
+          hue += 5;
+          hue %= 360;
+          if (hue == 80)
+            hue += 75;
+          $("#ok").css("color", "hsla(" + hue + ",100%,50%,0.1)" );
+          okshadow.setoption({
+            "color": "hsl(" + hue + ",100%,50%)",
+            "fuzzMin": fuzz,
+          });
+          setTimeout(loop, delay);
+        };
+        loop ();
+    });
+  </script>
+  <style type="text/css">
+    @font-face {
+      font-family: Neon;
+      src: url("neon2.ttf")
+    }
+    body {
+      background: black;
+      overflow: hidden;
+    }
+    #ok {
+      position: absolute;
+      font-family: Neon;
+      width: 100%;
+      top: 50%;
+      margin-top: -108px;
+      letter-spacing: -10px;
+      line-height: 128px;
+      text-align: center;
+      font-size: 256px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div id="ok">&nbsp;okfocus&nbsp;</div>
+</body>
+</html>

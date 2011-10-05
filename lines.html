@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
+  <script src='jquery-ui-1.8.16.custom.min.js'></script>
+  <script src='okshadow.js'></script>
+  <script src='jquery.parallax.unmin.js'></script>
+  <script>
+    $(function(){
+        var w  = $(window).width(),
+            h  = $(window).height(),
+            hm = 0,
+            dw = w / 50,
+            dh = h / 20,
+            divs = [],
+            frag = document.createDocumentFragment(),
+            colors = "#fcfcff #fffdfd #fffeff #ffffff".split(" "),
+            shadows = "#555 #666 #777".split(" "),
+            choice = function (list) { return list[Math.floor(Math.random() * list.length)] };
+
+        for (var i = 0; i < 20; i++) {
+          var div = document.createElement("div"),
+          t = -50, // Math.floor(Math.random() * h),
+          left = Math.floor(Math.random() * w),
+          width = Math.floor((0.5 + Math.random()) * dw),
+          height = Math.floor((0.5 + Math.random()) * dh);
+          div.style.width = width + "px";
+          div.style.height = h + 50 + "px";
+          div.style.left = left + "px";
+          div.style.top = t + "px";
+          div.style.opacity = 0.5;
+          div.style.backgroundColor = choice(colors);
+          divs.push([left, t, width, height, div])
+          frag.appendChild(div);
+          $(div).okshadow({
+            color: choice(shadows),
+            fuzzMin: 1, 
+            fuzzMax: 30,
+            yMax: 10,
+          })
+        }
+        document.body.appendChild(frag);
+        $(window).one("mousemove", function(){$("div").fadeIn()});
+    });
+  </script>
+
+  <style type="text/css">
+    html,body{
+      height: 100%;
+    }
+    body {
+      overflow: hidden;
+      font-size: 100px;
+    }
+    #pyramid {
+      left: 0;
+      top: 0;
+      width: 100%;
+      position: absolute;
+    }
+    div {
+      position: absolute;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+<div id="pyramid"></div>
+</body>
+</html>
