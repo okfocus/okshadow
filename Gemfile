@@ -1,3 +1,3 @@
 source :rubygems
 
-gem 'jasmine', :group => :development
+gem 'jasmine'
