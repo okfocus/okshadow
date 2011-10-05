@@ -138,8 +138,9 @@
       margin-right: 10px;
     }
     pre#license {
-      width: 100%;
+      width: auto;
       margin: 0;
+      padding: 10px;
     }
     pre a {
       color: #00f;
@@ -161,7 +162,7 @@
   <div id="content">
     <h2>OKShadow by OKFocus</h2>
     <p>
-      OKShadow is a JQuery plugin that makes drop shadows that track the mouse cursor.
+      OKShadow is a JQuery plugin that produces drop shadows that track the mouse cursor.
       Many effects are possible, including depth-of-field simulation and focus effects.
     </p>
 
@@ -216,11 +217,10 @@ $('#example3 a').okshadow({
 });
 
 <b>css:</b>
-
-a:hover {
-  color: red !important;
-  text-shadow: none !important;
-}
+  a:hover {
+    color: red !important;
+    text-shadow: none !important;
+  }
 </pre>
 <div id="example3">
 <a href="#">Aureli pathice et cinaede Furi,</a><br/>
@@ -277,13 +277,14 @@ a:hover {
         <td width='100'><b>null</b></td>
       </tr>
       <tr><th>fuzzFactor</th> 
-        <td>affects blur radius based on mouse distance<br/><i>demonstration: </i> <a href="factors.html">factors</a></td>
+        <td>affects blur radius based on mouse distance<br/><i>demonstration of <a href="factors.html">factors</a></i></td>
         <td width='100'><b>40</b></td>
       </tr>
     </table>
   <h3>Methods</h3>
   <p>
     OKShadow offers the method <b>setoption</b> to allow parameters to be changed after instantiation.
+    It takes either a hash of parameters or a single key and value.
   </p>
 
   <h3>License</h3>
