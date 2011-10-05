@@ -44,8 +44,9 @@ p. OKFocus tests JavaScript with Jasmine. Run tests:
 
 <pre class='sh'>
 <code>
-$ gem install jasmine
+
+$ bundle install
 $ jasmine init
-$ rake jasmine:ci
+$ rake jasmine
 </code>
 </pre>
