@@ -20,13 +20,9 @@
         };
 
         base.setoption = function (key, value) {
-            if (typeof key === "string") {
-              base.options[key] = value;
-              if (key === 'color')
-                return base.update();
-            } else {
-              base.options = $.extend(base.options, key);
-            }
+            if (typeof key === "string") base.options[key] = value;
+            if (key === 'color') return base.update();
+            else base.options = $.extend(base.options, key);
             base.mousemove(base);
         };
 
@@ -35,9 +31,7 @@
                 mousemove: base.mousemove
             });
             base.mousemove({ pageX: $(window).width() / 2, pageY: $(window).height() / 2 });
-            if (base.options.transparent) {
-                base.el.style.color = "transparent";
-            }
+            if (base.options.transparent) base.el.style.color = "transparent";
         };
 
         base.mousemove = function (e){
@@ -52,12 +46,11 @@
             sy = dy / base.options.yFactor,
             distance = Math.sqrt(dx*dx + dy*dy),
             fuzz = distance / base.options.fuzz + base.options.fuzzMin;
-            if (base.options.xMax !== null)
-                sx = base.clamp(sx, -1 * base.options.xMax, base.options.xMax)
-            if (base.options.yMax !== null)
-                sy = base.clamp(sy, -1 * base.options.yMax, base.options.yMax)
-            if (base.options.fuzzMax !== null)
-                fuzz = base.clamp(fuzz, base.options.fuzzMin, base.options.fuzzMax)
+
+            if (base.options.xMax) sx = base.clamp(sx, -1 * base.options.xMax, base.options.xMax);
+            if (base.options.yMax) sy = base.clamp(sy, -1 * base.options.yMax, base.options.yMax);
+            if (base.options.fuzzMax) fuzz = base.clamp(fuzz, base.options.fuzzMin, base.options.fuzzMax)
+
             sx += base.options.xOffset;
             sy += base.options.yOffset;
             base.pageX = x;
