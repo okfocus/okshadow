@@ -1,0 +1,51 @@
+h1. okshadow
+
+h2. OKShadow by OKFocus
+
+p. OKShadow is a jQuery plugin that produces drop shadows that track the mouse cursor. Many effects are possible, including depth-of-field simulation and focus effects. See examples "here":http://okfoc.us/okshadow.
+
+h2. Usage
+
+p. OKShadow can bind to any DOM element that recognizes the CSS3 box-shadow or text-shadow property.
+
+h3. Options
+
+|_.option|_.description|_.default|
+|color|sets shadow color|#888|
+|textShadow|applies the shadow to the text; otherwise, the shadow affects the container ("box-shadow")|false|
+|transparent|sets text color to transparent for ghost text effect|false|
+|xMax|horizontal movement constraint, in pixels|null|
+|yxOffset|horizontal offset, in pixels|0|
+|xFactor|affects blur position based on mouse distance|30|
+|yMax|vertical movement constraint, in pixels|null|
+|yOffset|vertical offset, in pixels|0|
+|yFactor|affects blur position based on mouse distance|30|
+|fuzzMin|minimum blur radius in pixels|null|
+|fuzzMax|maximum blur radius in pixels|null|
+|fuzzFactor|affects blur radius based on mouse distance|40|
+
+h3. Methods
+
+p. OKShadow offers the method *setoption* so parameters can be changed after instantiation. It takes either a hash of parameters or a single key and value. For example:
+
+<pre class='js'>
+<code>
+$('#ok').okshadow();
+$('#ok').data("okshadow").setoption({
+  "color": "red",
+  "fuzzMin": 10,
+});
+</code>
+</pre>
+
+h3. Run Tests
+
+p. OKFocus tests JavaScript with Jasmine. Run tests:
+
+<pre class='sh'>
+<code>
+$ bundle install
+$ jasmine init
+$ rake jasmine
+</code>
+</pre>
