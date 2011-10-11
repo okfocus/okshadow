@@ -1,12 +1,9 @@
 <!doctype html>
 <html>
 <head>
-<!--
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
--->
   <title>OKShadow</title>
   <meta charset='utf-8'>
-  <script src='jquery.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
   <script src='okshadow.js'></script>
   <script>
     $(function(){
@@ -43,6 +40,8 @@
     body {
       margin: 20px;
       background: url('img/photocopy.png');
+      background-attachment:fixed;
+      background-position:top center;
       font-family: sans-serif;
       font-size: 15px;
       line-height: 22px;
@@ -152,15 +151,30 @@
     p {
       width: 100%;
     }
-
+    header img {padding-bottom:15px;margin-top:10px;max-width:200px;height:33px;}
+    h2{text-transform:uppercase;font-size:15px;letter-spacing:6px;margin-bottom:20px;margin-top:-10px;font-style:italic;font-family: Comic Sans MS, cursive;font-weight:100;color:#333;-webkit-transform: rotate(-1deg);-moz-transform: rotate(-1deg); }
+  
   </style>
 </head>
 <body>
 <div id="container">
   <div id="header">
-    <div id="ok"></div>
-    <h1>okshadow&nbsp;&nbsp;</h1>
-  </div>
+    <a href="http://okfoc.us"><header>
+      <!-- img loaded with js -->
+    </header></a>
+    <hr>
+    <script>
+    (function() {
+      // cachebusting or whatever,,
+      var d = new Date(),
+      logo = document.createElement('img'),
+      header = document.getElementsByTagName('header')[0],
+      nav = document.getElementsByTagName('nav')[0];
+      logo.src = 'http://okfoc.us/assets/images/logo.gif?ok=' + d.getTime();
+      header.insertBefore(logo,nav);
+    })();
+    </script>
+</div>
   <ul id="sidebar">
   </ul>
   <div id="content">
@@ -185,9 +199,9 @@
       By default, OKShadow binds to a div:
     </p>
     <pre>
-
-    $('#example1').okshadow();
-
+    $(function(){
+    	$('#example1').okshadow();
+    });
 </pre>
     <div id="example1">
     </div>
@@ -296,6 +310,10 @@ $('#ok').data("okshadow").setoption({
   "color": "red",
   "fuzzMin": 10,
 });</pre>
+  <h3><a href="https://github.com/okfocus/okshadow/zipball/master">Download OKShadow</a> or <a href="http://github.com/okfocus/okshadow">Contribute on Github</a><br><br><a href="https://twitter.com/okfocus" class="twitter-follow-button">Follow @okfocus</a>
+	      <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>       
+	      <iframe src="//www.facebook.com/plugins/like.php?app_id=220585137996235&amp;href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FOKFocus%2F126395247420599&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:20px; clear:both;background:transparent;" ></iframe>
+     </h3>
   <h3>License</h3>
     <pre id="license">
 Copyright © 2011 OKFocus, <a href="http://okfoc.us">http://okfoc.us</a>
@@ -317,7 +335,8 @@ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
 NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br>
+<img src="http://okfoc.us/assets/images/okshadow.png"style="padding:10px"><img src="http://okfoc.us/okhover/img/OSI-Approved-License.png"style="padding:10px;"></pre>
   </pre>
 </div>
 </body>
