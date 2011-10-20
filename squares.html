@@ -2,26 +2,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
--->
-  <script src='jquery.js'></script>
-  <script src='jquery-ui-1.8.16.custom.min.js'></script>
   <script src='okshadow.js'></script>
-  <script src='jquery.parallax.unmin.js'></script>
   <script>
     $(function(){
-        var w  = $(window).width(),
-            h  = $(window).height(),
-            side = 100,
-            pad = 20,
-            percol = Math.floor((w-pad) / (side + pad)),
-            perrow = Math.floor((h-pad) / (side + pad)),
-            leftshim = -1 * (w - (side+pad)*percol + pad ) / 2,
-            topshim = -1 * (h - (side+pad)*perrow + pad) / 2,
-            frag = document.createDocumentFragment();
+        var frag = document.createDocumentFragment(),
+        w  = $(window).width(),
+        h  = $(window).height(),
+        side = 100,
+        pad = 20,
+        percol = Math.floor((w - pad) / (side + pad)),
+        perrow = Math.floor((h - pad) / (side + pad)),
+        leftshim = -1 * (w - (side+pad) * percol + pad) / 2,
+        topshim  = -1 * (h - (side+pad) * perrow + pad) / 2;
+
         perrow += 1;
         percol += 2;
+
         for (var i = 0; i < perrow; i++) {
           for (var j = 0; j < percol; j++) {
             var div = document.createElement("div");
