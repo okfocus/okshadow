@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
+  <script src='jquery-ui-1.8.16.custom.min.js'></script>
+  <script src='okshadow.js'></script>
+  <script src='jquery.parallax.unmin.js'></script>
+  <script>
+    $(function(){
+			$("#pyramid").okshadow({
+				'textShadow': true,
+				'color': 'blue',
+				'xMax': 100,
+				'yMax': 50
+			});
+			$("#text").okshadow({
+				'textShadow': true,
+				'color': 'red',
+				'xMax': 50,
+				'yMax': 50
+			});
+    });
+  </script>
+
+  <style type="text/css">
+		@font-face {
+			font-family: 'OKFocusRegular';
+			src: url('fonts/okfocus-regular-webfont.eot');
+			src: url('fonts/okfocus-regular-webfont.eot?#iefix') format('embedded-opentype'),
+			url('fonts/okfocus-regular-webfont.woff') format('woff'),
+			url('fonts/okfocus-regular-webfont.ttf') format('truetype'),
+			url('fonts/okfocus-regular-webfont.svg#OKFocusRegular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+    html,body{
+      height: 100%;
+    }
+    body {
+      overflow: hidden;
+      font-size: 100px;
+      background: #f8f8f8;
+    }
+    #pyramid {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 400px;
+      height: 400px;
+      background: transparent;
+      margin-left: -200px;
+      margin-top: -275px;
+      font-size: 400px;
+      background: transparent;
+      text-align: center;
+      color: rgba(0,0,0,0.4);
+    }
+    #text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 700px;
+      height: 50px;
+      background: #fff;
+      margin-left: -350px;
+      margin-top: 200px;
+      color: white;
+      background: transparent;
+      text-align: center;
+      font-size: 60px;
+      color: rgba(0,0,0,0.5);
+    }
+    .okfont {
+			font-family: 'OKFocusRegular';
+			font-weight: normal;
+    }
+      </style>
+</head>
+
+<body>
+<div id="hud"></div>
+
+<div id="pyramid" class="okfont">p</div>
+<div id="text" class="okfont">OKFOCUS</div>
+</body>
+</html>
