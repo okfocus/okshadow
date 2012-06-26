@@ -252,8 +252,14 @@ $('#example3 a').okshadow({
     <p>
       As of version 1.3, OKShadow now works on mobile browsers that implement the
       DeviceOrientation event -- iPhones, iPads, and more recent Android devices.
-      A new parameter, <i>downwards</i> has been added to force conventional
+    </p>
+    <p>
+      A new parameter, <b>downwards</b>, has been added to force conventional
       drop shadow behavior when the device is upside-down.
+    </p>
+    <p>
+      Avoid big shadows on mobile: large values of <b>fuzzMax</b> can cause
+      mobile Safari to lag severely. We recommend keeping this below about 50.
     </p>
     <p>
       Check out this <a href="mobile.html">demonstration</a> on your device of choice!
