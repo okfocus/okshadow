@@ -14,6 +14,7 @@ h3. Options
 |color|sets shadow color|#888|
 |textShadow|applies the shadow to the text; otherwise, the shadow affects the container ("box-shadow")|false|
 |transparent|sets text color to transparent for ghost text effect|false|
+|downwards|on mobile browsers, shadows will only move downwards|true|
 |xMax|horizontal movement constraint, in pixels|null|
 |yxOffset|horizontal offset, in pixels|0|
 |xFactor|affects blur position based on mouse distance|30|
