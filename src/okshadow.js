@@ -1,6 +1,6 @@
 /*
  * OKShadow by OKFocus - http://okfoc.us - @okfocus
- * Version 1.2
+ * Version 1.3
  * Licensed under MIT.
  *
  */
@@ -38,36 +38,49 @@
     };
 
     base.start = function (){
-      if (detectMobile() && DeviceOrientationEvent in window) {
-        $(window).bind({ deviceorientation: base.deviceorientation });
+      if (detectMobile() && ('DeviceOrientationEvent' in window)) {
+        window.addEventListener("deviceorientation", base.deviceorientation, false);
         base.deviceorientation({ 'alpha': 0, 'beta': 0, 'gamma': 0 });
+        window.addEventListener("resize", base.resize, false);
+        base.portraitMode = true;
       } else {
         $(window).bind({ mousemove: base.mousemove });
         base.mousemove({ pageX: $(window).width() / 2, pageY: $(window).height() / 2 });
       }
       if (base.options.transparent) base.el.style.color = "transparent";
+      base.update();
+    };
+    
+    base.resize = function(){
+    	var aspect = $(window).height() / $(window).width();
+    	base.portraitMode = aspect >= 1;
     };
 
-    // "beta" is forward/backward -- 90 degrees is straight up and down
-    // "gamma" is left-right
+		// In portrait mode, "beta" is forward/backward, "gamma" is left-right.
+    // In landscape mode, the opposite is true.
     base.deviceorientation = function (e){
       if (e && 'beta' in e && e.beta) {
-        b = ((e.beta + 90 + 360) % 360 - 180);
-        g = ((e.gamma + 90 + 360) % 360 - 180);
-        if (b < 0) b = -b;
-        if (g < 0) g = -g;
-        b -= 90;
-        g -= 90;
-        b /= 90;
-        g /= 90;
-        if (base.options.xMax != null) sx = b * base.options.xMax;
-        else                   sx = b * 50;
-        if (base.options.yMax != null) sy = g * base.options.yMax;
-        else                   sy = g * 50;
-        base.fuzz = (b * (base.options.fuzzMax - base.options.fuzzMin)) + base.options.fuzzMin;
+        var b, g;
+        if (base.portraitMode) {
+					b = e.beta;
+					g = e.gamma;
+				} else {
+					b = e.gamma;
+					g = e.beta;
+				}
+        distance = Math.sqrt(b*b + g*g);
+        if (base.options.xMax != null) base.sx = g / 90 * base.options.xMax;
+        else                           base.sx = g / 90 * 50;
+        if (base.options.yMax != null) base.sy = b / 90 * base.options.yMax;
+        else                           base.sy = b / 90 * 50;
+        if (base.options.fuzzMax != null)
+            base.fuzz = Math.min(Math.abs((distance / 90 * (base.options.fuzzMax - base.options.fuzzMin)) + base.options.fuzzMin), base.options.fuzzMax);
+        else
+            base.fuzz = Math.abs((distance / 90 * (30 - base.options.fuzzMin)) + base.options.fuzzMin, 30);
+        if (base.options.downwards)
+        		base.sy = Math.abs(base.sy);
         base.sx += base.options.xOffset;
         base.sy += base.options.yOffset;
-        base.update(base.sx, base.sy, base.fuzz);
       }
     };
 
@@ -95,18 +108,19 @@
       base.sx = sx;
       base.sy = sy;
       base.fuzz = fuzz;
-      base.update(sx, sy, fuzz);
+      // base.update(sx, sy, fuzz);
     };
     
     base.browsers = " -moz- -webkit- -ms-".split(" ");
     base.update = function (sx, sy, fuzz) {
-      var val = sx + "px " + sy + "px " + fuzz + "px " + base.options.color;
+      var val = base.sx + "px " + base.sy + "px " + base.fuzz + "px " + base.options.color;
       var prop = base.options.textShadow ? "text-shadow" : "box-shadow";
       var styles = {};
       for (var i in base.browsers) {
         styles[base.browsers[i] + prop] = val;
       }
       base.$el.css(styles);
+      requestAnimFrame(base.update);
     }
     
     base.init();
@@ -116,13 +130,14 @@
     color: '#888',
     fuzz: 40,
     fuzzMin: 0,
-    fuzzMax: null,
+    fuzzMax: 30,
     xOffset: 0,
     xFactor: 30,
-    xMax: null,
+    xMax: 30,
     yOffset: 0,
     yFactor: 30,
-    yMax: null,
+    yMax: 30,
+    downwards: true,
     textShadow: false,
     transparent: false
   };

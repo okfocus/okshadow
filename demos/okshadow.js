@@ -1,6 +1,6 @@
 /*
  * OKShadow by OKFocus - http://okfoc.us - @okfocus
- * Version 1.2
+ * Version 1.3
  * Licensed under MIT.
  *
  */
