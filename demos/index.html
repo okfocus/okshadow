@@ -264,7 +264,7 @@ $('#example3 a').okshadow({
       </tr>
       <tr><th>xMax</th>      
         <td>horizontal movement constraint, in pixels</td>
-        <td width='100'><b>null</b></td>
+        <td width='100'><b>30</b></td>
       </tr>
       <tr><th>xOffset</th>      
         <td>horizontal offset, in pixels</td>
@@ -276,7 +276,7 @@ $('#example3 a').okshadow({
       </tr>
       <tr><th>yMax</th>      
         <td>vertical movement constraint, in pixels</td>
-        <td width='100'><b>null</b></td>
+        <td width='100'><b>30</b></td>
       </tr>
       <tr><th>yOffset</th>      
         <td>vertical offset, in pixels</td>
@@ -288,15 +288,19 @@ $('#example3 a').okshadow({
       </tr>
       <tr><th>fuzzMin</th>   
         <td>minimum blur radius in pixels</td>
-        <td width='100'><b>null</b></td>
+        <td width='100'><b>0</b></td>
       </tr>
       <tr><th>fuzzMax</th>   
         <td>maximum blur radius in pixels</td>
-        <td width='100'><b>null</b></td>
+        <td width='100'><b>40</b></td>
       </tr>
       <tr><th>fuzzFactor</th> 
         <td>affects blur radius based on mouse distance<br/><i>demonstration of <a href="factors.html">factors</a></i></td>
         <td width='100'><b>40</b></td>
+      </tr>
+      <tr><th>downwards</th> 
+        <td>on mobile browsers, shadows will only move down and to the sides. used to preserve "proper" shadow behavior when a device is rotated 180 degrees.</td>
+        <td width='100'><b>true</b></td>
       </tr>
     </table>
   <h3>Methods</h3>

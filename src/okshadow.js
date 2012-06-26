@@ -52,33 +52,33 @@
     };
     
     base.resize = function(){
-    	var aspect = $(window).height() / $(window).width();
-    	base.portraitMode = aspect >= 1;
+      var aspect = $(window).height() / $(window).width();
+      base.portraitMode = aspect >= 1;
     };
 
-		// In portrait mode, "beta" is forward/backward, "gamma" is left-right.
+    // In portrait mode, "beta" is forward/backward, "gamma" is left-right.
     // In landscape mode, the opposite is true.
     base.deviceorientation = function (e){
       if (e && 'beta' in e && e.beta) {
         var b, g;
         if (base.portraitMode) {
-					b = e.beta;
-					g = e.gamma;
-				} else {
-					b = e.gamma;
-					g = e.beta;
-				}
+          b = e.beta;
+          g = e.gamma;
+        } else {
+          b = e.gamma;
+          g = e.beta;
+        }
         distance = Math.sqrt(b*b + g*g);
         if (base.options.xMax != null) base.sx = g / 90 * base.options.xMax;
         else                           base.sx = g / 90 * 50;
         if (base.options.yMax != null) base.sy = b / 90 * base.options.yMax;
         else                           base.sy = b / 90 * 50;
         if (base.options.fuzzMax != null)
-            base.fuzz = Math.min(Math.abs((distance / 90 * (base.options.fuzzMax - base.options.fuzzMin)) + base.options.fuzzMin), base.options.fuzzMax);
+          base.fuzz = Math.min(Math.abs((distance / 90 * (base.options.fuzzMax - base.options.fuzzMin)) + base.options.fuzzMin), base.options.fuzzMax);
         else
-            base.fuzz = Math.abs((distance / 90 * (30 - base.options.fuzzMin)) + base.options.fuzzMin, 30);
+          base.fuzz = Math.abs((distance / 90 * (30 - base.options.fuzzMin)) + base.options.fuzzMin, 30);
         if (base.options.downwards)
-        		base.sy = Math.abs(base.sy);
+          base.sy = Math.abs(base.sy);
         base.sx += base.options.xOffset;
         base.sy += base.options.yOffset;
       }
