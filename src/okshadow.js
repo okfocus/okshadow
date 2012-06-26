@@ -1,6 +1,6 @@
 /*
  * OKShadow by OKFocus - http://okfoc.us - @okfocus
- * Version 1.1
+ * Version 1.2
  * Licensed under MIT.
  *
  */
@@ -30,17 +30,45 @@
       if (typeof key === "string") {
         base.options[key] = value;
         if (key === 'color')
-          return base.update();
+          return base.update(base.sx, base.sy, base.fuzz);
       } else {
         base.options = $.extend(base.options, key);
       }
       base.mousemove(base);
     };
 
-    base.start = function () {
-      $(window).bind({ mousemove: base.mousemove });
-      base.mousemove({ pageX: $(window).width() / 2, pageY: $(window).height() / 2 });
+    base.start = function (){
+      if (detectMobile() && DeviceOrientationEvent in window) {
+        $(window).bind({ deviceorientation: base.deviceorientation });
+        base.deviceorientation({ 'alpha': 0, 'beta': 0, 'gamma': 0 });
+      } else {
+        $(window).bind({ mousemove: base.mousemove });
+        base.mousemove({ pageX: $(window).width() / 2, pageY: $(window).height() / 2 });
+      }
       if (base.options.transparent) base.el.style.color = "transparent";
+    };
+
+    // "beta" is forward/backward -- 90 degrees is straight up and down
+    // "gamma" is left-right
+    base.deviceorientation = function (e){
+      if (e && 'beta' in e && e.beta) {
+        b = ((e.beta + 90 + 360) % 360 - 180);
+        g = ((e.gamma + 90 + 360) % 360 - 180);
+        if (b < 0) b = -b;
+        if (g < 0) g = -g;
+        b -= 90;
+        g -= 90;
+        b /= 90;
+        g /= 90;
+        if (base.options.xMax != null) sx = b * base.options.xMax;
+        else                   sx = b * 50;
+        if (base.options.yMax != null) sy = g * base.options.yMax;
+        else                   sy = g * 50;
+        base.fuzz = (b * (base.options.fuzzMax - base.options.fuzzMin)) + base.options.fuzzMin;
+        base.sx += base.options.xOffset;
+        base.sy += base.options.yOffset;
+        base.update(base.sx, base.sy, base.fuzz);
+      }
     };
 
     base.mousemove = function (e){
@@ -56,9 +84,9 @@
       distance = Math.sqrt(dx*dx + dy*dy),
       fuzz = distance / base.options.fuzz + base.options.fuzzMin;
       
-      if (base.options.xMax) sx = base.clamp(sx, -1 * base.options.xMax, base.options.xMax);
-      if (base.options.yMax) sy = base.clamp(sy, -1 * base.options.yMax, base.options.yMax);
-      if (base.options.fuzzMax) fuzz = base.clamp(fuzz, base.options.fuzzMin, base.options.fuzzMax)
+      if (base.options.xMax != null) sx = base.clamp(sx, -1 * base.options.xMax, base.options.xMax);
+      if (base.options.yMax != null) sy = base.clamp(sy, -1 * base.options.yMax, base.options.yMax);
+      if (base.options.fuzzMax != null) fuzz = base.clamp(fuzz, base.options.fuzzMin, base.options.fuzzMax)
       
       sx += base.options.xOffset;
       sy += base.options.yOffset;
@@ -67,11 +95,11 @@
       base.sx = sx;
       base.sy = sy;
       base.fuzz = fuzz;
-      base.update();
+      base.update(sx, sy, fuzz);
     };
     
     base.browsers = " -moz- -webkit- -ms-".split(" ");
-    base.update = function () {
+    base.update = function (sx, sy, fuzz) {
       var val = sx + "px " + sy + "px " + fuzz + "px " + base.options.color;
       var prop = base.options.textShadow ? "text-shadow" : "box-shadow";
       var styles = {};
@@ -105,4 +133,18 @@
     });
   };
   
+  window.requestAnimFrame = (function(){
+    return window.requestAnimationFrame       || 
+           window.webkitRequestAnimationFrame || 
+           window.mozRequestAnimationFrame    || 
+           window.oRequestAnimationFrame      || 
+           window.msRequestAnimationFrame     || 
+           function( callback ){
+             window.setTimeout(callback, 1000 / 60);
+           };
+  })();
+
+  function detectMobile () {
+    return navigator.userAgent.indexOf("Mobile") !== -1 || navigator.userAgent.indexOf("Android") !== -1;
+  }
 })(jQuery);
