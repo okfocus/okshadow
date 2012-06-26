@@ -248,7 +248,17 @@ $('#example3 a').okshadow({
 <a href="#">Frontem tabernae sopionibus scribam.</a><br/>
 <a href="#">Pedicabo ego vos et irrumabo.</a><br/>
 </div>
-    <h3>Usage</h3>
+    <h3>Mobile</h3>
+    <p>
+      As of version 1.3, OKShadow now works on mobile browsers that implement the
+      DeviceOrientation event -- iPhones, iPads, and more recent Android devices.
+      A new parameter, <i>downwards</i> has been added to force conventional
+      drop shadow behavior when the device is upside-down.
+    </p>
+    <p>
+      Check out this <a href="mobile.html">demonstration</a> on your device of choice!
+    </p>
+    <h3>Options</h3>
     <table id="params" cellspacing="0">
       <tr><th>color</th>       
         <td>sets shadow color</td>
@@ -261,6 +271,10 @@ $('#example3 a').okshadow({
       <tr><th>transparent</th>
         <td>sets text color to transparent for ghost text effect </td>
         <td width='100'><b>false</b></td>
+      </tr>
+      <tr><th>downwards</th> 
+        <td>on mobile browsers, shadows will only move downwards</td>
+        <td width='100'><b>true</b></td>
       </tr>
       <tr><th>xMax</th>      
         <td>horizontal movement constraint, in pixels</td>
@@ -297,10 +311,6 @@ $('#example3 a').okshadow({
       <tr><th>fuzzFactor</th> 
         <td>affects blur radius based on mouse distance<br/><i>demonstration of <a href="factors.html">factors</a></i></td>
         <td width='100'><b>40</b></td>
-      </tr>
-      <tr><th>downwards</th> 
-        <td>on mobile browsers, shadows will only move down and to the sides. used to preserve "proper" shadow behavior when a device is rotated 180 degrees.</td>
-        <td width='100'><b>true</b></td>
       </tr>
     </table>
   <h3>Methods</h3>
