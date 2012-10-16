@@ -1,0 +1,8 @@
+{
+  "name": "OKShadow",
+  "version": "1.1",
+  "main": "./src/okshadow.js",
+  "dependencies": {
+    "jquery": ">1.7.2"
+  }
+}
