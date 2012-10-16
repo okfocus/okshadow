@@ -248,7 +248,23 @@ $('#example3 a').okshadow({
 <a href="#">Frontem tabernae sopionibus scribam.</a><br/>
 <a href="#">Pedicabo ego vos et irrumabo.</a><br/>
 </div>
-    <h3>Usage</h3>
+    <h3>Mobile</h3>
+    <p>
+      As of version 1.3, OKShadow now works on mobile browsers that implement the
+      DeviceOrientation event -- iPhones, iPads, and more recent Android devices.
+    </p>
+    <p>
+      A new parameter, <b>downwards</b>, has been added to force conventional
+      drop shadow behavior when the device is upside-down.
+    </p>
+    <p>
+      Avoid big shadows on mobile: large values of <b>fuzzMax</b> can cause
+      mobile Safari to lag severely. We recommend keeping this below about 50.
+    </p>
+    <p>
+      Check out this <a href="mobile.html">demonstration</a> on your device of choice!
+    </p>
+    <h3>Options</h3>
     <table id="params" cellspacing="0">
       <tr><th>color</th>       
         <td>sets shadow color</td>
@@ -262,9 +278,13 @@ $('#example3 a').okshadow({
         <td>sets text color to transparent for ghost text effect </td>
         <td width='100'><b>false</b></td>
       </tr>
+      <tr><th>downwards</th> 
+        <td>on mobile browsers, shadows will only move downwards</td>
+        <td width='100'><b>true</b></td>
+      </tr>
       <tr><th>xMax</th>      
         <td>horizontal movement constraint, in pixels</td>
-        <td width='100'><b>null</b></td>
+        <td width='100'><b>30</b></td>
       </tr>
       <tr><th>xOffset</th>      
         <td>horizontal offset, in pixels</td>
@@ -276,7 +296,7 @@ $('#example3 a').okshadow({
       </tr>
       <tr><th>yMax</th>      
         <td>vertical movement constraint, in pixels</td>
-        <td width='100'><b>null</b></td>
+        <td width='100'><b>30</b></td>
       </tr>
       <tr><th>yOffset</th>      
         <td>vertical offset, in pixels</td>
@@ -288,11 +308,11 @@ $('#example3 a').okshadow({
       </tr>
       <tr><th>fuzzMin</th>   
         <td>minimum blur radius in pixels</td>
-        <td width='100'><b>null</b></td>
+        <td width='100'><b>0</b></td>
       </tr>
       <tr><th>fuzzMax</th>   
         <td>maximum blur radius in pixels</td>
-        <td width='100'><b>null</b></td>
+        <td width='100'><b>40</b></td>
       </tr>
       <tr><th>fuzzFactor</th> 
         <td>affects blur radius based on mouse distance<br/><i>demonstration of <a href="factors.html">factors</a></i></td>
