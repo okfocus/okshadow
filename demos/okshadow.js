@@ -1,6 +1,6 @@
 /*
  * OKShadow by OKFocus - http://okfoc.us - @okfocus
- * Version 1.2
+ * Version 1.3
  * Licensed under MIT.
  *
  */
@@ -13,6 +13,8 @@
     base.el = el;        
     base.$el.data("okshadow", base);
     
+    var active = true;
+
     base.init = function(){            
       base.options = $.extend({}, $.okshadow.options, options);
       base.build();
@@ -113,6 +115,8 @@
     
     base.browsers = " -moz- -webkit- -ms-".split(" ");
     base.update = function (sx, sy, fuzz) {
+      if (! active) return;
+      requestAnimFrame(base.update);
       var val = base.sx + "px " + base.sy + "px " + base.fuzz + "px " + base.options.color;
       var prop = base.options.textShadow ? "text-shadow" : "box-shadow";
       var styles = {};
@@ -120,8 +124,19 @@
         styles[base.browsers[i] + prop] = val;
       }
       base.$el.css(styles);
-      requestAnimFrame(base.update);
-    }
+    };
+
+    base.pause = function(){
+      active = false;
+    };
+
+    base.unpause = function(){
+      if (! active) {
+        active = true;
+        base.update();
+      }
+    };
+
     
     base.init();
   };

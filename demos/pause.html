@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<!--
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.js'></script>
+-->
+  <script src='jquery.js'></script>
+  <script src='okshadow.js'></script>
+  <script>
+    $(function(){
+        $('#ok').okshadow({
+          color: 'red',
+          xFactor: 1000,
+          yFactor: 1000,
+          textShadow: true,
+          transparent: true
+        });
+        var paused = false;
+        $("#pause").click(function(){
+          var ok = $("#ok").data('okshadow');
+          if (! paused) {
+            ok.pause();
+            $("#pause").html("Unpause");
+          } else {
+            ok.unpause();
+            $("#pause").html("Pause");
+          }
+          paused = ! paused;
+        }).focus();
+    });
+  </script>
+  <style type="text/css">
+    body {
+      overflow: hidden;
+    }
+    #ok {
+      position: absolute;
+      top: 50%;
+      margin-top: -128px;
+      width: 100%;
+      line-height: 128px;
+      text-align: center;
+      font-size: 256px;
+    }
+    #buttons {
+      width: 200px;
+      position: fixed;
+      top: 75%;
+      left: 50%;
+      margin-left: -100px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="ok">okfocus</div>
+  <div id="buttons">
+    <button id="pause">Pause</button>
+  </div>
+</body>
+</html>

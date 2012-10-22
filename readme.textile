@@ -39,6 +39,8 @@ $('#ok').data("okshadow").setoption({
 </code>
 </pre>
 
+p. For use in dynamic web apps, use the *pause* and *unpause* methods to turn the effect on and off.
+
 h3. Run Tests
 
 p. OKFocus tests JavaScript with Jasmine. Run tests:
