@@ -93,7 +93,7 @@
       cy = offset.top + base.$el.height() / 2,
       cx = offset.left + base.$el.width() / 2,
       dx = (cx - x),
-      dy = (cy - y)
+      dy = (cy - y),
       sx = dx / base.options.xFactor,
       sy = dy / base.options.yFactor,
       distance = Math.sqrt(dx*dx + dy*dy),
