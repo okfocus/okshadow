@@ -61,7 +61,7 @@
     // In portrait mode, "beta" is forward/backward, "gamma" is left-right.
     // In landscape mode, the opposite is true.
     base.deviceorientation = function (e){
-      if (e && 'beta' in e && e.beta) {
+      if (e && 'beta' in e) {
         var b, g;
         if (base.portraitMode) {
           b = e.beta;
