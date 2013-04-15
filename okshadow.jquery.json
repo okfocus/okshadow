@@ -1,0 +1,38 @@
+{
+  "name": "okshadow",
+  "version": "1.1.0",
+  "title": "okshadow",
+  "description": "A jQuery Plugin that produces drop shadows that track the mouse cursor.",
+  "homepage": "https://github.com/okfocus/okshadow",
+  "docs": "https://github.com/okfocus/okshadow",
+  "demo": "http://okfoc.us/okshadow",
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://raw.github.com/okfocus/okshadow/master/license"
+  }],
+  "keywords": ["directional", "light", "drop shadow", "mouse cursor", "effect", "depth of field", "focus", "shadow", "okfocus"],
+  "author": {
+    "name": "OKFocus",
+    "url": "https://github.com/okfocus"
+  },
+  "maintainers": [{
+    "name": "Jonathan Vingiano",
+    "url": "https://github.com/jgv"
+  },
+  {
+    "name": "Jules LaPlace",
+    "url": "https://github.com/julescarbon"
+  },
+  {
+    "name": "Ryder Ripps",
+    "url": "https://github.com/ryderr"
+  }],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/okfocus/okshadow.git"
+  },
+  "bugs": "https://github.com/okfocus/okshadow/issues",
+  "dependencies": {
+    "jquery": ">=1.4"
+  }
+}
